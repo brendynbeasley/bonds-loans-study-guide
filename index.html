@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bonds & Loans Study Guide</title>
+<style>
+:root{--bg:#f5f4ef;--card:#fff;--ink:#1d1c24;--mute:#6b6a75;--line:#e4e2da;--accent:#4338ca;--accent2:#eceeff;--good:#0c8f61;--goodbg:#e4f6ee;--bad:#cf3434;--badbg:#fdeaea;--warn:#b26f00;--warnbg:#fff3d9;--shadow:0 1px 2px rgba(20,20,40,.05),0 8px 24px rgba(20,20,40,.06)}
+:root[data-theme=dark]{--bg:#111117;--card:#1b1b24;--ink:#ececf2;--mute:#9b9aaa;--line:#2f2f3c;--accent:#9596ff;--accent2:#25254a;--good:#34d399;--goodbg:#11332a;--bad:#f87171;--badbg:#3a1a1d;--warn:#fbbf24;--warnbg:#3a2d10;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{line-height:1.2;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(28px,5vw,44px);letter-spacing:-.03em}
+h2{font-size:24px}h3{font-size:17px}
+p{margin:0 0 .8em}
+button{font:inherit;color:inherit;cursor:pointer}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hin{max-width:1080px;margin:auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:800;letter-spacing:-.02em;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.brand i{width:26px;height:26px;border-radius:8px;background:var(--accent);display:grid;place-items:center;color:#fff;font-style:normal;font-size:14px}
+nav{display:flex;gap:4px;overflow-x:auto;flex:1;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav button{border:0;background:none;padding:7px 12px;border-radius:99px;font-size:14px;font-weight:600;color:var(--mute);white-space:nowrap}
+nav button:hover{color:var(--ink)}
+nav button.on{background:var(--ink);color:var(--bg)}
+.tog{border:1px solid var(--line);background:var(--card);border-radius:99px;width:36px;height:36px;flex:none}
+main{max-width:1080px;margin:auto;padding:28px 16px 80px}
+section{display:none;animation:in .35s ease}
+section.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+.mute{color:var(--mute)}.small{font-size:13.5px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.btn{border:0;background:var(--accent);color:#fff;font-weight:700;padding:11px 20px;border-radius:12px;transition:transform .1s,filter .15s}
+:root[data-theme=dark] .btn:not(.ghost){color:#14142a}
+.btn:hover{filter:brightness(1.1)}.btn:active{transform:scale(.97)}
+.btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn.sm{padding:7px 14px;font-size:14px;border-radius:10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:6px 13px;font-size:13.5px;font-weight:600;color:var(--mute)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+:root[data-theme=dark] .chip.on{color:#14142a}
+/* home */
+.hero{padding:26px 4px 22px}
+.hero p{font-size:18px;color:var(--mute);max-width:620px}
+.step{position:relative;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:18px;padding:20px;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.step:hover{transform:translateY(-3px);border-color:var(--accent)}
+.step{display:flex;flex-direction:column;justify-content:flex-start;color:var(--ink)}
+.step .meter{margin-top:auto}.step .meter+span{margin-top:8px}.step>span.mute{margin-bottom:14px}
+.step .n{align-self:flex-start;width:30px;height:30px;border-radius:10px;background:var(--accent2);color:var(--accent);display:grid;place-items:center;font-weight:800;margin-bottom:12px}
+.step b{display:block;font-size:17px;margin-bottom:2px}
+.meter{height:7px;background:var(--line);border-radius:9px;overflow:hidden;margin-top:14px}
+.meter i{display:block;height:100%;background:var(--accent);border-radius:9px;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.more{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+/* learn */
+.learn{display:grid;grid-template-columns:230px 1fr;gap:20px;align-items:start}
+.tlist{position:sticky;top:74px;display:flex;flex-direction:column;gap:4px}
+.tlist button{display:flex;align-items:center;gap:10px;text-align:left;border:0;background:none;padding:10px 12px;border-radius:12px;font-weight:600;font-size:14.5px;color:var(--mute)}
+.tlist button .d{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:none;display:grid;place-items:center;font-size:12px;color:#fff}
+.tlist button.done .d{background:var(--good);border-color:var(--good)}
+.tlist button.on{background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
+@media(max-width:780px){.learn{grid-template-columns:1fr}.tlist{position:static;flex-direction:row;overflow-x:auto;padding-bottom:4px}.tlist button{white-space:nowrap}}
+.lesson>*+*{margin-top:16px}
+.idea{font-size:19px;line-height:1.45;border-left:4px solid var(--accent);padding:4px 0 4px 16px;margin:10px 0 4px}
+.lab{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.fx{background:var(--accent2);border-radius:14px;padding:14px 18px;margin:8px 0;font-size:18px;font-family:Cambria,"Times New Roman",serif;overflow-x:auto;white-space:nowrap}
+.fx small{display:block;font:600 12px system-ui;color:var(--accent);letter-spacing:.03em;margin-bottom:6px;white-space:normal}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 3px}
+.fr>span:first-child{border-bottom:1.5px solid currentColor;padding:0 6px 1px}
+.fr>span:last-child{padding:1px 6px 0}
+ol.steps{margin:0;padding-left:22px}ol.steps li{margin-bottom:6px}
+.ex{background:var(--goodbg);border-radius:14px;padding:14px 18px}
+.ex b.t{color:var(--good)}
+.warnb{background:var(--warnbg);border-radius:14px;padding:14px 18px}
+.warnb b.t{color:var(--warn)}
+.warnb ul,.ex ul{margin:6px 0 0;padding-left:20px}
+/* widgets */
+.ctrl{display:grid;gap:10px;margin-bottom:16px}
+.sl{display:grid;grid-template-columns:minmax(120px,190px) 1fr 84px;align-items:center;gap:12px;font-size:14px;font-weight:600}
+.sl b{text-align:right;font-variant-numeric:tabular-nums;color:var(--accent)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+@media(max-width:520px){.sl{grid-template-columns:1fr 70px}.sl input{grid-column:1/-1;grid-row:2}}
+.bars{display:flex;align-items:flex-end;gap:6px}
+.col{flex:1;min-width:0;text-align:center}
+.bv{font-size:11.5px;font-weight:700;font-variant-numeric:tabular-nums;height:18px;white-space:nowrap}
+.bw{display:flex;align-items:flex-end;border-radius:8px 8px 0 0}
+.bw.ghost{background:repeating-linear-gradient(135deg,var(--line) 0 4px,transparent 4px 8px)}
+.bar{width:100%;background:var(--accent);border-radius:8px 8px 0 0;transition:height .6s cubic-bezier(.2,.8,.2,1),background .3s}
+.bar.hot{background:var(--good)}.bar.dim{opacity:.45}.bar.red{background:var(--bad)}
+.bl{font-size:11.5px;color:var(--mute);margin-top:5px;white-space:nowrap}
+.cap{margin:14px 0 0;font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:14px}
+.stat{background:var(--bg);border-radius:12px;padding:10px 14px}
+.stat span{display:block;font-size:12px;color:var(--mute);font-weight:600}
+.stat b{font-size:20px;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:3px 11px;border-radius:99px;font-size:12.5px;font-weight:800}
+.pill.g{background:var(--goodbg);color:var(--good)}.pill.r{background:var(--badbg);color:var(--bad)}.pill.n{background:var(--accent2);color:var(--accent)}
+.saw{height:104px;position:relative;margin-top:56px}
+.beam{position:absolute;left:10%;right:10%;top:44px;height:8px;background:var(--ink);border-radius:8px;transition:transform .7s cubic-bezier(.3,1.5,.5,1)}
+.beam span{position:absolute;top:-36px;padding:4px 12px;border-radius:99px;font-size:12.5px;font-weight:800;background:var(--accent2);color:var(--accent)}
+.beam .l{left:-10px}.beam .r{right:-10px}
+.piv{position:absolute;left:50%;top:52px;transform:translateX(-50%);border:24px solid transparent;border-bottom:40px solid var(--line);border-top:0}
+.chart{width:100%;max-width:520px;display:block;margin:auto;overflow:visible}
+.chart .ax{stroke:var(--line);stroke-width:2}
+.chart text{fill:var(--mute);font-size:11px;font-weight:600}
+.chart .ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.chart .main{stroke:var(--accent)}.chart .alt{stroke:var(--mute);stroke-dasharray:5 6}
+.chart .mt{fill:var(--accent);font-size:12px;font-weight:800}
+.chart circle.main{fill:var(--card);stroke:var(--accent);stroke-width:3}
+.sd .dline{stroke:var(--accent);stroke-width:4;stroke-linecap:round}.sd .sline{stroke:var(--good);stroke-width:4;stroke-linecap:round}
+.sd .gh{stroke:var(--line);stroke-width:3;stroke-dasharray:4 6}
+.sd .dt{fill:var(--accent);font-size:12px;font-weight:800}.sd .st{fill:var(--good);font-size:12px;font-weight:800}
+.sd .pl{stroke:var(--mute);stroke-dasharray:3 5;stroke-width:1.5}.sd .dot{fill:var(--ink)}
+.sd .mv{transition:transform .9s cubic-bezier(.3,.9,.3,1)}
+.tug{position:relative;height:44px;border-radius:99px;background:linear-gradient(90deg,var(--goodbg),var(--bg) 50%,var(--accent2));margin-top:16px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;font-size:13px;font-weight:800}
+.tug i{position:absolute;top:4px;width:36px;height:36px;margin-left:-18px;border-radius:50%;background:var(--ink);transition:left .6s cubic-bezier(.3,1.4,.5,1)}
+.inl{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px;font-size:15px}
+.inl input{width:74px;padding:6px 8px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-weight:700;text-align:center}
+.hm{height:12px;background:var(--line);border-radius:9px;position:relative;margin:6px 0 14px}
+.hm i{position:absolute;top:-4px;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:var(--accent);transition:left .6s cubic-bezier(.3,1.2,.5,1)}
+.hm u{position:absolute;top:0;bottom:0;width:2px;background:var(--mute)}
+/* questions */
+.qwrap{max-width:720px;margin:auto}
+.qtag{font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.qq{font-size:18px;font-weight:600;margin-bottom:16px;line-height:1.45}
+.qq table{border-collapse:collapse;margin:12px 0 0;font-size:14.5px;font-weight:500}
+.qq td,.qq th{border:1px solid var(--line);padding:6px 12px;text-align:center}
+.opts{display:grid;gap:9px}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:13px;padding:12px 14px;transition:border-color .15s,background .15s,transform .1s}
+.opt:hover{border-color:var(--accent)}
+.opt i{flex:none;width:28px;height:28px;border-radius:8px;background:var(--bg);display:grid;place-items:center;font-style:normal;font-weight:800;font-size:13px}
+.opt.sel{border-color:var(--accent);background:var(--accent2)}
+.opt.ok{border-color:var(--good);background:var(--goodbg)}.opt.ok i{background:var(--good);color:#fff}
+.opt.no{border-color:var(--bad);background:var(--badbg);animation:shake .35s}.opt.no i{background:var(--bad);color:#fff}
+.opt:disabled{cursor:default}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.fb{margin-top:14px;border-radius:13px;padding:14px 16px;font-size:15px;display:none}
+.fb.ok{display:block;background:var(--goodbg)}.fb.no{display:block;background:var(--badbg)}
+.fb b.h{display:block;margin-bottom:4px}
+.fb.ok b.h{color:var(--good)}.fb.no b.h{color:var(--bad)}
+.bar2{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.score{font-weight:800;font-variant-numeric:tabular-nums}
+/* flashcards */
+.fc{perspective:1400px;height:320px;cursor:pointer;max-width:620px;margin:auto}
+.fci{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.3,.9,.3,1);transform-style:preserve-3d}
+.fc.flip .fci{transform:rotateY(180deg)}
+.fc.na .fci{transition:none}
+.fcf,.fcb{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;border-radius:22px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);overflow:auto}
+.fcf{font-size:22px;font-weight:700;line-height:1.35}
+.fcb{transform:rotateY(180deg);font-size:18px}
+.fcb .fx{font-size:17px;margin-top:10px}
+.fct{position:absolute;top:16px;left:20px;font-size:11.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.fch{position:absolute;bottom:14px;font-size:12.5px;color:var(--mute);font-weight:500}
+.rate{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:620px;margin:16px auto 0}
+.rate button{border:1.5px solid var(--line);background:var(--card);border-radius:13px;padding:10px 4px;font-weight:800}
+.rate button small{display:block;font-weight:600;color:var(--mute);font-size:12px}
+.rate .r1{color:var(--bad)}.rate .r2{color:var(--warn)}.rate .r3{color:var(--good)}.rate .r4{color:var(--accent)}
+.rate button:hover{border-color:currentColor}
+.counts{display:flex;gap:14px;justify-content:center;font-size:13.5px;font-weight:700;margin-bottom:14px}
+.counts span b{font-variant-numeric:tabular-nums}
+/* blanks */
+.bk{padding:14px 0;border-bottom:1px solid var(--line);font-size:16.5px;line-height:2.1}
+.bk:last-of-type{border:0}
+.bk input{width:118px;border:0;border-bottom:2px solid var(--mute);background:var(--bg);color:var(--ink);font:inherit;font-weight:700;text-align:center;padding:2px 6px;border-radius:6px 6px 0 0;outline:0}
+.bk input:focus{border-color:var(--accent)}
+.bk input.ok{border-color:var(--good);background:var(--goodbg);color:var(--good)}
+.bk input.no{border-color:var(--bad);background:var(--badbg);color:var(--bad)}
+.bk .ans{display:none;font-size:13.5px;color:var(--good);font-weight:700;line-height:1.4}
+.bank{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.bank span{background:var(--accent2);color:var(--accent);border-radius:8px;padding:3px 10px;font-size:13.5px;font-weight:700}
+/* match */
+.match{display:grid;grid-template-columns:1fr 1.6fr;gap:10px}
+.match button{border:1.5px solid var(--line);background:var(--card);border-radius:13px;padding:12px 14px;text-align:left;font-size:14.5px;min-height:58px;transition:all .2s}
+.match button.sel{border-color:var(--accent);background:var(--accent2)}
+.match button.ok{border-color:var(--good);background:var(--goodbg);opacity:.55;pointer-events:none}
+.match button.no{animation:shake .35s;border-color:var(--bad)}
+.match .mc{display:grid;gap:8px;align-content:start}
+/* test */
+.timer{font-weight:800;font-variant-numeric:tabular-nums;font-size:18px;padding:4px 14px;border-radius:99px;background:var(--accent2);color:var(--accent)}
+.timer.low{background:var(--badbg);color:var(--bad);animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.55}}
+.pal{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.pal button{width:34px;height:34px;border-radius:9px;border:1.5px solid var(--line);background:var(--card);font-size:13px;font-weight:700}
+.pal button.a{background:var(--accent2);border-color:var(--accent);color:var(--accent)}
+.pal button.cur{outline:2px solid var(--ink);outline-offset:1px}
+.ring{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;margin:0 auto 14px;background:conic-gradient(var(--accent) calc(var(--p)*1%),var(--line) 0)}
+.ring div{width:118px;height:118px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:32px;font-weight:800}
+.rev{border-top:1px solid var(--line);padding:16px 0}
+.rev .m{font-weight:800}.rev .m.ok{color:var(--good)}.rev .m.no{color:var(--bad)}
+table.tb{width:100%;border-collapse:collapse;font-size:14.5px}
+table.tb td,table.tb th{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left}
+.sheet .card h3{color:var(--accent)}
+@media print{header,.noprint{display:none}section{display:none!important}#sheet{display:block!important}.card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><div class="hin">
+  <div class="brand"><i>%</i>Bonds &amp; Loans</div>
+  <nav id="nav"></nav>
+  <button class="tog" id="theme" title="Light / dark">◐</button>
+</div></header>
+<main>
+  <section id="home"></section>
+  <section id="learn"><div class="learn"><div class="tlist" id="tlist"></div><div class="lesson" id="lesson"></div></div></section>
+  <section id="cards"></section>
+  <section id="practice"></section>
+  <section id="blanks"></section>
+  <section id="tf"></section>
+  <section id="match"></section>
+  <section id="test"></section>
+  <section id="sheet"></section>
+</main>
+<script>
+/* ---------- helpers & saved progress ---------- */
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const R=(a,b)=>Math.floor(Math.random()*(b-a+1))+a,pick=a=>a[R(0,a.length-1)];
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=R(0,i);[a[i],a[j]]=[a[j],a[i]]}return a};
+const m=x=>(x<0?'−':'')+'$'+Math.abs(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const m0=x=>'$'+Math.round(x).toLocaleString('en-US');
+const p2=x=>x.toFixed(2)+'%';
+const g=x=>String(+x.toFixed(5));
+const AF=(r,n)=>r===0?n:(1-Math.pow(1+r,-n))/r;
+const fr=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const KEY='bondsGuide.v1';
+let S={cards:{},learned:{},best:{},stat:{},theme:null};
+try{Object.assign(S,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const record=(t,ok)=>{const s=S.stat[t]||(S.stat[t]=[0,0]);s[1]++;if(ok)s[0]++;save()};
+const T={pv:'Present value',loan:'Loans & annuities',bond:'Coupon bonds',comp:'Compounding returns',risk:'Interest-rate risk',real:'Real vs. nominal rates',sd:'Bond supply & demand',term:'Term structure',spread:'Spreads & signals'};
+const TK=Object.keys(T);
+
+/* ---------- lessons ---------- */
+const LESSONS={
+pv:{idea:'A dollar later is worth less than a dollar today. To bring future money back to today, divide by (1 + i) once for every year you wait.',
+ fx:[['Present value of one payment',`PV = ${fr('FV','(1 + i)<sup>n</sup>')}`],['Future value',`FV = PV × (1 + i)<sup>n</sup>`]],
+ steps:['Write the interest rate as a decimal: 10% → 0.10.','Raise (1 + i) to the number of years: 1.10<sup>3</sup> = 1.331.','Divide the future payment by that number.'],
+ wt:'Watch the denominator eat the payment',
+ ex:'$50 arriving in 3 years at 10%: 50 ÷ 1.10<sup>3</sup> = 50 ÷ 1.331 = <b>$37.57</b>. Why? Because $37.57 invested today at 10% grows to exactly $50 in 3 years.',
+ bad:['Dividing by (1 + i × n) instead of (1 + i)<sup>n</sup>. Interest compounds, so use the exponent.','Using the same exponent for every payment. Each payment gets the exponent of <i>its own</i> year.']},
+loan:{idea:'A loan is the present value of all the payments you promise. The bank gives you today what your future payments are worth today.',
+ fx:[['Loan amount (payments of C for n periods)',`Loan = ${fr('C','(1 + i)')} + ${fr('C','(1 + i)<sup>2</sup>')} + … + ${fr('C','(1 + i)<sup>n</sup>')}`],['Shortcut (annuity factor)',`Loan = C × ${fr('1 − (1 + i)<sup>−n</sup>','i')}`],['Monthly payments','use i ÷ 12 as the rate and years × 12 as n'],['Minimum cash flow to justify a purchase',`C = ${fr('Cost − Resale ÷ (1 + i)<sup>n</sup>','annuity factor')}`]],
+ steps:['Decide the period (year or month) and match the rate to it.','Discount every payment back to today.','Add them up. That sum is the most a lender will give you.'],
+ wt:'How big a loan do your payments buy?',
+ ex:'$4,800 a year for 6 years at 7.9%: 4,800/1.079 + … + 4,800/1.079<sup>6</sup> = <b>$22,257.30</b>.<br>A $2,000 computer lasting 3 years at 10% must earn 2,000 ÷ 2.4869 = <b>$804</b> a year. With $250 resale value: (2,000 − 187.83) ÷ 2.4869 = <b>$729</b>.',
+ bad:['Multiplying payment × number of payments. That ignores interest entirely.','Using the annual rate with monthly payments. Divide the rate by 12.','Subtracting resale value without discounting it first.']},
+bond:{idea:'A coupon bond is a stream of equal coupons plus one big face-value payment at the end. Its price is the present value of all of them.',
+ fx:[['Coupon bond price',`P = ${fr('C','(1 + i)')} + ${fr('C','(1 + i)<sup>2</sup>')} + … + ${fr('C','(1 + i)<sup>n</sup>')} + ${fr('Face','(1 + i)<sup>n</sup>')}`],['Coupon payment','C = coupon rate × Face']],
+ steps:['Find the coupon: 5% of $1,000 = $50 a year.','Discount each coupon at the <i>market</i> rate.','Discount the face value at the market rate too, and add everything.','Check: coupon rate below market rate → price below face (discount). Equal → par. Above → premium.'],
+ wt:'Price a bond and watch the seesaw',
+ ex:'5-year, 5% coupon, $1,000 face. At 10%: <b>$810.46</b>. At 11%: <b>$778.25</b>. At 9%: <b>$844.41</b>. Rates up, price down.',
+ bad:['Discounting with the coupon rate. The coupon rate only sets the dollar payment; the market rate does the discounting.','Forgetting to discount the face value.','Thinking a higher market rate makes a bond worth more. It is the opposite.']},
+comp:{idea:'Returns earn returns. So you cannot convert between time periods by simple multiplying or dividing; you have to compound.',
+ fx:[['Total return over n years → annual',`annual = (1 + R<sub>total</sub>)<sup>1/n</sup> − 1`],['Monthly → annual',`annual = (1 + r<sub>month</sub>)<sup>12</sup> − 1`]],
+ steps:['Turn the percent into a growth factor: 20% → 1.20.','Going to a shorter period? Take a root. Going to a longer period? Raise to a power.','Subtract 1 and turn back into a percent.'],
+ wt:'Simple vs. compound growth',
+ ex:'20% over 5 years: 1.20<sup>1/5</sup> − 1 = <b>3.71%</b> a year (not 4%). 0.4% a month: 1.004<sup>12</sup> − 1 = <b>4.91%</b> a year (not 4.8%).',
+ bad:['20 ÷ 5 = 4%. Too high, because it ignores compounding.','0.4 × 12 = 4.8%. Too low, for the same reason.']},
+risk:{idea:'When rates rise, every bond loses value, but long-term bonds lose far more, because their payments are discounted over many more years.',
+ fx:[['Zero-coupon (discount) bond',`P = ${fr('Face','(1 + i)<sup>n</sup>')}`],['Percent change in price',`%Δ = ${fr('P<sub>new</sub> − P<sub>old</sub>','P<sub>old</sub>')}`]],
+ steps:['Price the bond at the old rate.','Price it again at the new rate with the years that remain.','Compare. The longer the maturity, the larger the change.'],
+ wt:'Same rate change, very different damage',
+ ex:'A 30-year bond bought at par at 1.4% fell to <b>$4,719.46</b> per $10,000 when rates hit 5.01% (−52.8%). A 1-year bond only went from $98.62 to $95.23 (−3.4%). A 10-year zero at 6% costs $55.84; at 7% it costs $50.83.',
+ bad:['Assuming all bonds react the same. Maturity matters hugely.','Thinking a Treasury bond is "risk-free". It has no default risk, but it has interest-rate risk if you sell early.']},
+real:{idea:'The nominal rate is what the contract says. The real rate is what you actually gain in purchasing power after inflation.',
+ fx:[['Real rate (Fisher equation)','r = i − π'],['Ex ante (before)','r = i − expected inflation'],['Ex post (after)','r = i − actual inflation']],
+ steps:['Ex ante real rate: subtract <i>expected</i> inflation. This is what both sides planned on.','Ex post real rate: subtract <i>actual</i> inflation. This is what really happened.','Inflation lower than expected → lender wins. Higher than expected → borrower wins.'],
+ wt:'Who wins the tug of war?',
+ ex:'Nominal 6%, expected inflation 5% → ex ante real rate 1%. Inflation turns out to be 4% → ex post real rate <b>2%</b>. The lender earns more than planned; the borrower pays more.',
+ bad:['Mixing up who gains. Surprise inflation helps borrowers, because they repay with cheaper dollars.','Thinking more inflation <i>uncertainty</i> does nothing. It adds an inflation-risk premium: bond prices fall, yields rise.']},
+sd:{idea:'Bond prices are set by supply (borrowers issuing bonds) and demand (savers buying them). And price up always means yield down.',
+ fx:[['Price and yield','price ↑ ⇔ yield ↓'],['Supply shifts right when','government borrows more · firms see better investment opportunities · expected inflation rises'],['Demand shifts right when','wealth rises · bonds become less risky or more liquid · expected inflation falls']],
+ steps:['Ask: who is affected, bond issuers (supply) or bond buyers (demand)?','Decide the direction: more of it → right, less of it → left.','Read the new price, then flip it for the yield.'],
+ wt:'Shift the curves',
+ ex:'World peace → less military borrowing → government issues fewer bonds → <b>supply shifts left</b> → bond prices rise, yields fall.',
+ bad:['Shifting the wrong curve. Government borrowing is supply, not demand.','Forgetting to flip: a higher price is a lower yield.']},
+term:{idea:'A long-term rate is the average of the short-term rates people expect over the bond\'s life (plus a risk premium for longer bonds).',
+ fx:[['Expectations hypothesis',`i<sub>n</sub> = ${fr('i<sub>1</sub> + i<sup>e</sup><sub>year 2</sub> + … + i<sup>e</sup><sub>year n</sub>','n')}`],['Implied future 1-year rates','year 1→2: 2·i<sub>2</sub> − i<sub>1</sub> &nbsp;&nbsp;&nbsp; year 2→3: 3·i<sub>3</sub> − 2·i<sub>2</sub>'],['Liquidity premium theory',`i<sub>n</sub> = rp<sub>n</sub> + ${fr('i<sub>1</sub> + i<sup>e</sup><sub>year 2</sub> + … + i<sup>e</sup><sub>year n</sub>','n')}`]],
+ steps:['To build a yield: average the current and expected 1-year rates.','To go backwards: multiply each yield by its maturity, then subtract.','With risk premiums: subtract the premium from the yield first, then do the same thing.'],
+ wt:'Build a yield curve',
+ ex:'Rates of 4%, 5%, 6% → yields of 4.00%, 4.50%, 5.00%.<br>Yields of 4.36, 4.56, 4.65 → year 1→2 rate = 2(4.56) − 4.36 = <b>4.76%</b>; year 2→3 = 3(4.65) − 2(4.56) = <b>4.83%</b>.<br>Yields 3, 4, 5 with premiums 0, 1, 2 → expected rates are 3% and 3%: the slope was all premium.',
+ bad:['Reading the 2-year yield as "next year\'s rate". It is an average.','Forgetting to take out the risk premium before solving for expected rates.']},
+spread:{idea:'Two gaps between yields work like economic warning lights: the term spread and the risk spread.',
+ fx:[['Term spread','10-year Treasury − 3-month Treasury'],['Risk spread','Baa corporate − 10-year Treasury'],['Boom signal','term spread positive and widening + risk spread narrowing'],['Recession signal','term spread shrinking or negative + risk spread widening']],
+ steps:['Compute both spreads for each date.','Look at the <i>direction</i> they are moving.','Steeper curve + calmer credit market = growth. Inverted curve + nervous credit market = recession.'],
+ wt:'Read the warning lights',
+ ex:'January → May: term spread goes 2.00 → 3.25 (widening), risk spread goes 4.0 → 3.3 (narrowing). Both point to a <b>boom</b>, even though the Baa yield itself rose.',
+ bad:['Looking at the Baa yield alone. It can rise while the <i>spread</i> narrows.','Calling the term spread negative just because short rates are rising.']}
+};
+
+/* ---------- flashcards ---------- */
+const CARDS=[
+['pv','What is present value?','The value <b>today</b> of money you will receive in the future.'],
+['pv','Formula: present value of one payment',`<div class="fx">PV = ${fr('FV','(1 + i)<sup>n</sup>')}</div>`],
+['pv','Why is $100 next year worth less than $100 today?','Because money today can be invested and earn interest. You need less than $100 today to have $100 next year.'],
+['pv','What happens to PV when the interest rate rises?','It <b>falls</b>. A bigger denominator eats more of the payment.'],
+['pv','What happens to PV when the payment is further away?','It <b>falls</b>. The exponent n is bigger, so the denominator is bigger.'],
+['loan','How do you find the size of a loan?','It is the <b>present value of all the payments</b>.<div class="fx">C/(1+i) + C/(1+i)<sup>2</sup> + … + C/(1+i)<sup>n</sup></div>'],
+['loan','Annuity factor shortcut',`<div class="fx">${fr('1 − (1 + i)<sup>−n</sup>','i')}</div>Multiply by the payment to get the present value of n equal payments.`],
+['loan','How do you switch a loan from annual to monthly payments?','Rate: divide by 12. Number of periods: multiply by 12.'],
+['loan','Same total paid per year, but monthly instead of yearly. Is the loan bigger or smaller (same number of years)?','<b>Bigger.</b> Each dollar is paid earlier, so it is discounted less.'],
+['loan','Minimum yearly cash flow for a machine to be worth buying?',`<div class="fx">C = ${fr('Cost − PV of resale value','annuity factor')}</div>`],
+['bond','What is a coupon bond?','A bond that pays a fixed coupon every year and returns its face value at maturity.'],
+['bond','Formula: price of a coupon bond',`<div class="fx">P = ${fr('C','1+i')} + … + ${fr('C','(1+i)<sup>n</sup>')} + ${fr('Face','(1+i)<sup>n</sup>')}</div>`],
+['bond','Which rate do you discount with: coupon rate or market rate?','The <b>market rate</b>. The coupon rate only tells you the dollar size of the coupon.'],
+['bond','Interest rates rise. Bond prices…?','<b>Fall.</b> Price and yield always move in opposite directions.'],
+['bond','When does a bond sell at par (face value)?','When its coupon rate <b>equals</b> the market interest rate.'],
+['bond','When does a bond sell at a premium (above face)?','When its coupon rate is <b>higher</b> than the market rate.'],
+['bond','When does a bond sell at a discount?','When its coupon rate is <b>lower</b> than the market rate.'],
+['comp','Convert a total return over n years into an annual return',`<div class="fx">(1 + R<sub>total</sub>)<sup>1/n</sup> − 1</div>20% over 5 years → 3.71%`],
+['comp','Convert a monthly return into an annual return',`<div class="fx">(1 + r<sub>month</sub>)<sup>12</sup> − 1</div>0.4% a month → 4.91%`],
+['comp','Why is 20% over 5 years less than 4% a year?','Because each year\'s return also earns returns. A smaller annual rate is enough to reach 20% once compounding helps.'],
+['risk','Formula: price of a zero-coupon bond',`<div class="fx">P = ${fr('Face','(1 + i)<sup>n</sup>')}</div>`],
+['risk','What is interest-rate risk?','The risk that a bond\'s <b>price falls</b> because market interest rates rise.'],
+['risk','Which bonds have more interest-rate risk?','<b>Long-maturity</b> bonds. Their payments are discounted over more years, so a rate change hits harder.'],
+['risk','Price of a 1-year $100 discount bond at 5%?','100 ÷ 1.05 = <b>$95.24</b>'],
+['real','Fisher equation','<div class="fx">real rate = nominal rate − inflation</div>'],
+['real','Ex ante real interest rate','Nominal rate − <b>expected</b> inflation. What people think they are getting when they sign.'],
+['real','Ex post real interest rate','Nominal rate − <b>actual</b> inflation. What they really got.'],
+['real','Inflation is higher than expected. Who gains?','<b>Borrowers.</b> They repay with dollars that are worth less. Lenders lose.'],
+['real','Inflation is lower than expected. Who gains?','<b>Lenders.</b> The real rate they earn is higher than planned. Borrowers lose.'],
+['real','What is inflation risk?','Uncertainty about future inflation. More of it makes investors demand a premium: bond prices fall and yields rise.'],
+['sd','Government borrows less. What happens in the bond market?','Bond <b>supply shifts left</b>. Prices rise, yields fall.'],
+['sd','Government runs bigger deficits. What happens?','Bond <b>supply shifts right</b>. Prices fall, yields rise.'],
+['sd','Bonds become riskier. What happens?','Bond <b>demand shifts left</b>. Prices fall, yields rise.'],
+['sd','Expected inflation rises. What happens?','Demand shifts left <b>and</b> supply shifts right. Prices fall, yields rise.'],
+['term','Expectations hypothesis','A long-term yield equals the <b>average</b> of the current and expected future short-term rates.'],
+['term','Implied 1-year rate from year 1 to year 2','<div class="fx">2 · i<sub>2</sub> − i<sub>1</sub></div>'],
+['term','Implied 1-year rate from year 2 to year 3','<div class="fx">3 · i<sub>3</sub> − 2 · i<sub>2</sub></div>'],
+['term','Liquidity premium theory','Long yield = average of expected short rates <b>+ a risk premium</b> that grows with maturity.'],
+['term','Under the expectations hypothesis, what does an upward-sloping yield curve mean?','Short-term rates are expected to <b>rise</b>.'],
+['term','What does an inverted yield curve mean?','Short-term rates are expected to <b>fall</b>. It often comes before a recession.'],
+['spread','Term spread','Long-term Treasury yield − short-term Treasury yield (for example 10-year − 3-month).'],
+['spread','Risk spread','Corporate bond yield − Treasury yield of the same maturity (for example Baa − 10-year Treasury).'],
+['spread','What do the spreads look like before a boom?','Term spread <b>positive and widening</b>; risk spread <b>narrowing</b>.'],
+['spread','What do the spreads look like before a recession?','Term spread <b>shrinking or negative</b>; risk spread <b>widening</b>.']
+];
+
+/* ---------- question bank ---------- */
+function mc(t,q,correct,wrongs,e){const set=[correct];wrongs.forEach(w=>{if(!set.includes(w)&&set.length<4)set.push(w)});const ch=shuffle(set);return{topic:t,q,choices:ch,answer:ch.indexOf(correct),explain:e}}
+const GEN={
+pv(){const X=pick([500,1000,2000,5000,10000]),n=R(2,10),i=pick([3,4,5,6,7,8,10,12]),r=i/100,v=X/Math.pow(1+r,n);
+ return mc('pv',`What is the present value of <b>${m0(X)}</b> received <b>${n} years</b> from now if the interest rate is <b>${i}%</b>?`,m(v),[m(X/(1+r*n)),m(X/Math.pow(1+r,n-1)),m(X*Math.pow(1-r,n)),m(X/Math.pow(1+r,n+1))],
+ `PV = ${X.toLocaleString()} ÷ (${g(1+r)})<sup>${n}</sup> = ${X.toLocaleString()} ÷ ${Math.pow(1+r,n).toFixed(4)} = <b>${m(v)}</b>. The tempting wrong answer ${m(X/(1+r*n))} divides by (1 + ${g(r)} × ${n}), which ignores compounding.`)},
+loan(){const P=pick([2400,3000,4800,6000]),n=R(3,7),i=pick([5,6,7.9,9,10]),r=i/100,v=P*AF(r,n);
+ return mc('loan',`You can afford to pay <b>${m0(P)}</b> at the end of each year for <b>${n} years</b>. The interest rate is <b>${i}%</b>. How large a loan can you get?`,m(v),[m(P*AF(r,n)*(1+r)),m(P*AF(r,n-1)),m(P*n/Math.pow(1+r,n)),m(P*n),m(P*n/(1+r))],
+ `Loan = ${P}/(${g(1+r)}) + … + ${P}/(${g(1+r)})<sup>${n}</sup> = ${P} × ${AF(r,n).toFixed(4)} = <b>${m(v)}</b>. Each payment must be discounted with its own exponent, and the first payment is one year away.`)},
+cash(){const c=pick([2000,3000,5000,8000]),n=R(3,5),i=pick([6,8,10,12]),r=i/100,Sv=pick([0,250,500]),af=AF(r,n),d=Math.pow(1+r,-n),v=(c-Sv*d)/af;
+ const w=Sv?[m0((c-Sv)/af),m0(c/af),m0((c-Sv)/n),m0((c-Sv*d)/n)]:[m0(c/n),m0(c/(af*(1+r))),m0(c/AF(r,n+1)),m0(c*r)];
+ return mc('loan',`A machine costs <b>${m0(c)}</b> and lasts <b>${n} years</b>. ${Sv?`It can then be sold for <b>$${Sv}</b>.`:'It is then worthless.'} The interest rate is <b>${i}%</b>. What is the minimum annual cash flow it must generate to be worth buying?`,m0(v),w,
+ `Set cost = PV of cash flows${Sv?' + PV of resale value':''}. Annuity factor = ${af.toFixed(4)}. ${Sv?`PV of resale = ${Sv} ÷ ${g(1+r)}<sup>${n}</sup> = ${m(Sv*d)}. `:''}C = ${Sv?`(${c} − ${(Sv*d).toFixed(2)})`:c} ÷ ${af.toFixed(4)} = <b>${m0(v)}</b>.`)},
+bond(){const c=pick([4,5,6,7,8]),i=pick([3,4,5,6,7,8,9,10,11].filter(x=>x!=c)),n=R(3,8),C=10*c,r=i/100,af=AF(r,n),d=Math.pow(1+r,-n),P=C*af+1000*d;
+ return mc('bond',`A <b>${n}-year</b> bond has a $1,000 face value and a <b>${c}%</b> annual coupon. The market interest rate is <b>${i}%</b>. What is its price?`,m(P),[m(C*n+1000*d),m(10*i*AF(c/100,n)+1000*Math.pow(1+c/100,-n)),m((C*n+1000)*d),m(C*AF(r,n-1)+1000*Math.pow(1+r,-(n-1))),m(C*af+1000)],
+ `Coupon = $${C}. Price = ${C}/(${g(1+r)}) + … + ${C}/(${g(1+r)})<sup>${n}</sup> + 1000/(${g(1+r)})<sup>${n}</sup> = ${m(C*af)} + ${m(1000*d)} = <b>${m(P)}</b>. Check: coupon rate is ${c<i?'below':'above'} the market rate, so the price must be ${c<i?'below':'above'} $1,000.`)},
+ann(){const Rt=pick([20,30,40,50,60,100]),n=pick([4,5,6,8,10]),v=(Math.pow(1+Rt/100,1/n)-1)*100;
+ return mc('comp',`An investment pays a <b>total return of ${Rt}%</b> over <b>${n} years</b>. What annual rate of return is that?`,p2(v),[p2(Rt/n),p2(Math.log(1+Rt/100)/n*100),p2((Math.pow(1+Rt/100,1/(n+1))-1)*100),p2((Math.pow(1+Rt/100,1/(n-1))-1)*100)],
+ `(1 + r)<sup>${n}</sup> = ${g(1+Rt/100)}, so r = ${g(1+Rt/100)}<sup>1/${n}</sup> − 1 = <b>${p2(v)}</b>. Simply dividing ${Rt} ÷ ${n} = ${p2(Rt/n)} is too high because it ignores compounding.`)},
+mon(){const mo=pick([0.3,0.4,0.5,0.6,0.75,1,1.25,1.5]),r=mo/100,v=(Math.pow(1+r,12)-1)*100;
+ return mc('comp',`An investment pays <b>${mo}% per month</b>. What is the annual rate of return?`,p2(v),[p2(mo*12),p2((Math.exp(12*r)-1)*100+0.02),p2((Math.pow(1+r,11)-1)*100),p2((Math.pow(1+r,13)-1)*100)],
+ `Annual = (${g(1+r)})<sup>12</sup> − 1 = <b>${p2(v)}</b>. Multiplying ${mo} × 12 = ${p2(mo*12)} is too low because each month's interest also earns interest.`)},
+zero(){const n=pick([5,10,20,30]),y=pick([3,4,5,6]),dy=pick([1,2]),a=1000/Math.pow(1+y/100,n),b=1000/Math.pow(1+(y+dy)/100,n),d=a-b;
+ return mc('risk',`A <b>${n}-year zero-coupon bond</b> has a face value of $1,000 and a yield of <b>${y}%</b>. The yield rises to <b>${y+dy}%</b>. What happens to its price?`,`Falls by ${m(d)}`,[`Rises by ${m(d)}`,`Falls by ${m(a*dy/100)}`,`Falls by ${m(1000/(1+y/100*n)-1000/(1+(y+dy)/100*n))}`,`Falls by ${m(10*dy)}`],
+ `Old price = 1000 ÷ ${g(1+y/100)}<sup>${n}</sup> = ${m(a)}. New price = 1000 ÷ ${g(1+(y+dy)/100)}<sup>${n}</sup> = ${m(b)}. The price <b>falls by ${m(d)}</b> (${(d/a*100).toFixed(1)}%). Longer maturities fall more.`)},
+real(){const n=R(5,9),e=R(2,4),a=Math.max(0,e+pick([-2,-1,1,2])),win=a<e?'lender':'borrower',lose=a<e?'borrower':'lender';
+ return mc('real',`A borrower and lender both expect <b>${e}%</b> inflation and agree on a nominal interest rate of <b>${n}%</b>. Inflation turns out to be <b>${a}%</b>. What is the ex post real rate, and who gains?`,`${n-a}%, and the ${win} gains`,[`${n-a}%, and the ${lose} gains`,`${n-e}%, and the ${win} gains`,`${n-2*e+a}%, and the ${lose} gains`,`${n-e}%, and nobody gains because the rate was fixed`],
+ `Ex ante real rate = ${n} − ${e} = ${n-e}%. Ex post real rate = ${n} − ${a} = <b>${n-a}%</b>. Inflation was ${a<e?'lower':'higher'} than expected, so the real rate is ${a<e?'higher':'lower'} than planned and the <b>${win}</b> gains.`)},
+fwd(){const a=R(40,100)*5,b=a+R(1,8)*5,c=b+R(1,6)*5,f=x=>(x/100).toFixed(2)+'%',first=Math.random()<.5;
+ const tb=`<table><tr><th>1-year</th><th>2-year</th><th>3-year</th></tr><tr><td>${f(a)}</td><td>${f(b)}</td><td>${f(c)}</td></tr></table>`;
+ return first?mc('term',`Treasury yields today are shown below. Using the expectations theory, what is the implied 1-year rate from <b>year 1 to year 2</b>?${tb}`,f(2*b-a),[f((a+b)/2),f(b+(b-a)/2),f(3*c-2*b),f(b)],
+ `The 2-year yield is the average of the two 1-year rates: ${f(b)} = (${f(a)} + x) ÷ 2. So x = 2(${f(b)}) − ${f(a)} = <b>${f(2*b-a)}</b>.`)
+ :mc('term',`Treasury yields today are shown below. Using the expectations theory, what is the implied 1-year rate from <b>year 2 to year 3</b>?${tb}`,f(3*c-2*b),[f(2*c-b),f(2*b-a),f((b+c)/2),f(c)],
+ `Three years of returns total 3 × ${f(c)}. The first two years total 2 × ${f(b)}. The difference is year 3: 3(${f(c)}) − 2(${f(b)}) = <b>${f(3*c-2*b)}</b>.`)},
+yld(){let r;do{r=[R(2,8),R(2,8),R(2,8)]}while(r[0]+r[2]===2*r[1]||new Set(r).size<3);const n=pick([2,3]);
+ const q=`The 1-year interest rate is <b>${r[0]}%</b> today. It is expected to be <b>${r[1]}%</b> one year from now and <b>${r[2]}%</b> two years from now. Under the expectations hypothesis, what is the <b>${n}-year</b> yield today?`;
+ return n===3?mc('term',q,p2((r[0]+r[1]+r[2])/3),[p2((r[1]+r[2])/2),p2((r[0]+r[2])/2),p2(r[2]),p2(r[1])],`Average all three: (${r[0]} + ${r[1]} + ${r[2]}) ÷ 3 = <b>${p2((r[0]+r[1]+r[2])/3)}</b>.`)
+ :mc('term',q,p2((r[0]+r[1])/2),[p2((r[0]+r[1]+r[2])/3),p2((r[1]+r[2])/2),p2(r[1]),p2(r[0]+r[1])],`A 2-year bond only covers the first two years: (${r[0]} + ${r[1]}) ÷ 2 = <b>${p2((r[0]+r[1])/2)}</b>. The rate two years from now does not matter.`)},
+liq(){const a=R(2,5),e=R(2,7),rp=pick([0.5,1,1.5]),y=(a+e)/2+rp;
+ return mc('term',`The 1-year yield is <b>${a}%</b> and the 2-year yield is <b>${g(y)}%</b>. The 2-year bond carries a risk premium of <b>${rp}%</b> (the 1-year bond has none). What 1-year rate does the market expect next year?`,p2(e),[p2(e+2*rp),p2(e+rp),p2((a+e)/2),p2(e+4*rp)],
+ `Take the premium out first: ${g(y)} − ${rp} = ${g(y-rp)}. That is the average: (${a} + x) ÷ 2 = ${g(y-rp)}, so x = <b>${p2(e)}</b>. Skipping the premium gives ${p2(e+2*rp)}, which is too high.`)},
+sd(){const E=[['the government starts running much larger budget deficits','Supply','right'],['a lasting peace lets the government cut its military borrowing','Supply','left'],['businesses become optimistic and want to borrow for many new projects','Supply','right'],['households become wealthier and want to hold more assets','Demand','right'],['bonds become riskier compared with other assets','Demand','left'],['stocks suddenly look much riskier, so investors want safer assets','Demand','right'],['bonds become harder to sell quickly (less liquid)','Demand','left']];
+ const [ev,cv,dir]=pick(E),up=(cv==='Supply')===(dir==='left'),res=u=>u?'prices rise and yields fall':'prices fall and yields rise',oc=cv==='Supply'?'Demand':'Supply',od=dir==='left'?'right':'left';
+ return mc('sd',`Suppose ${ev}. What happens in the bond market?`,`${cv} shifts ${dir}; ${res(up)}`,[`${oc} shifts ${cv==='Supply'?(up?'right':'left'):(up?'left':'right')}; ${res(up)}`,`${cv} shifts ${dir}; ${res(!up)}`,`${cv} shifts ${od}; ${res(!up)}`],
+ `This changes how many bonds ${cv==='Supply'?'borrowers want to issue':'savers want to hold'}, so the <b>${cv.toLowerCase()}</b> curve shifts <b>${dir}</b>. That makes ${res(up)}.`)},
+spread(){const boom=Math.random()<.5,a=R(8,30)/10,b=a+R(15,25)/10,c=b+R(30,45)/10,a2=a+(boom?.2:.4),b2=b+(boom?1.2:-1.0),c2=c+(boom?.6:-.3),f=x=>x.toFixed(1)+'%';
+ const tb=`<table><tr><th></th><th>3-month T-bill</th><th>10-year Treasury</th><th>Baa corporate</th></tr><tr><td>January</td><td>${f(a)}</td><td>${f(b)}</td><td>${f(c)}</td></tr><tr><td>June</td><td>${f(a2)}</td><td>${f(b2)}</td><td>${f(c2)}</td></tr></table>`;
+ const o=['The term spread widened and the risk spread narrowed: heading for a boom','The term spread narrowed and the risk spread widened: heading for a recession',`The term spread widened but the risk spread also widened, since Baa yields ${boom?'rose':'fell less than Treasuries'}: mixed signal`,`The term spread narrowed and the risk spread narrowed, since Baa yields ${boom?'rose less than Treasuries':'fell'}: mixed signal`];
+ return mc('spread',`Based on this table, where is the economy heading?${tb}`,o[boom?0:1],o.filter((_,k)=>k!==(boom?0:1)),
+ `Term spread: ${f(b-a)} → ${f(b2-a2)} (${boom?'widened':'narrowed'}). Risk spread (Baa − Treasury): ${f(c-b)} → ${f(c2-b2)} (${boom?'narrowed':'widened'}). Watch the <i>spread</i>, not the Baa yield by itself. That points to a <b>${boom?'boom':'recession'}</b>.`)}
+};
+const GT={pv:['pv'],loan:['loan','cash'],bond:['bond'],comp:['ann','mon'],risk:['zero'],real:['real'],sd:['sd'],term:['fwd','yld','liq'],spread:['spread']};
+const SMC=[
+['loan','You pay $400 at the end of every month for 6 years instead of $4,800 at the end of every year for 6 years, at the same quoted rate. Why is the monthly loan larger?','Each dollar is paid earlier in the year, so it is discounted less','You pay more dollars in total over the six years','Monthly compounding lowers the effective annual interest rate','The lender takes on more risk and compensates with a bigger loan','Both plans pay $28,800 in total. The only difference is timing: monthly payments arrive sooner, so their present value is higher.'],
+['bond','A 3-year bond has a 10% coupon and a $1,000 face value. When would you pay more than $1,000 for it?','When the market interest rate is below 10%','When the market interest rate is above 10%','When the bond is close to maturity','Never; no bond is worth more than its face value plus one coupon','If other investments pay less than 10%, this bond\'s $100 coupons are extra valuable, so its present value is above $1,000.'],
+['bond','A bond\'s coupon rate is 6% and the market rate is 6%. One year passes and the market rate is still 6%. The bond\'s price is…','Still equal to face value','Lower, because one coupon has been paid out','Higher, because the face value is now closer','Lower, because the bond has less time to earn interest','Whenever the coupon rate equals the market rate, the bond sells at par, no matter how many years remain.'],
+['risk','Market interest rates rise by one percentage point. Which bond loses the largest share of its value?','A 30-year zero-coupon bond','A 30-year bond with a 6% coupon','A 10-year zero-coupon bond','A 1-year zero-coupon bond','Longer maturity means more risk. Among 30-year bonds, the zero has all of its value at the very end, so it is hit hardest.'],
+['risk','You buy a 30-year Treasury bond and rates then jump. If you hold it to maturity, what happens?','You still receive every promised payment, but the bond is worth less if you sell today','You lose money, because the Treasury reduces the coupons','You gain, because your coupons can be reinvested, so the price rises','Nothing changes, since Treasury prices do not respond to interest rates','There is no default risk, so payments are unchanged. But the market price falls, which matters if you need to sell, and you are stuck earning the old low rate.'],
+['risk','A 30-year bond fell 53% when rates rose from 1.4% to 5.01%, but a 1-year bond fell only 3.4%. Why?','Distant payments are discounted over many more years, so the rate change compounds','Long-term bonds have higher default risk','Short-term bonds pay larger coupons','The 1-year bond\'s rate did not change as much','Raising i changes (1+i)<sup>n</sup> a little when n = 1 and enormously when n = 30.'],
+['real','Expected inflation stays at 2%, but the chance that it jumps to 3% has risen. What happens to bonds?','Prices fall and yields rise, because investors demand an inflation-risk premium','Nothing, because expected inflation has not changed','Prices rise, because investors move into safe assets','Prices fall and yields fall, because real rates decline','More uncertainty about inflation is more risk. Investors need to be paid for it, which means a lower price and a higher yield.'],
+['real','A bank lends at a fixed 7% expecting 3% inflation. Inflation turns out to be 5%. Which statement is correct?','The ex post real rate is 2%, and the borrower benefits','The ex post real rate is 4%, and the bank benefits','The ex post real rate is 2%, and the bank benefits','The ex post real rate is 12%, and the borrower loses','7 − 5 = 2%, lower than the 4% planned. The borrower repays with dollars worth less than expected.'],
+['real','Expected inflation rises from 2% to 3% and the real rate is unchanged. A 10-year zero-coupon bond yielding 6% should now…','Yield 7%, and its price falls','Yield 5%, and its price rises','Yield 7%, and its price rises','Yield 6%, because the bond\'s payments are fixed','Nominal yield = real rate + expected inflation, so it rises one point. A higher yield means a lower price: $55.84 → $50.83 per $100.'],
+['sd','Expected inflation rises. In the bond market…','Demand shifts left and supply shifts right, so prices fall','Demand shifts right and supply shifts left, so prices rise','Only supply shifts right, so prices fall slightly','Demand shifts left and supply shifts left, so the price change is unclear','Savers want fewer bonds (their real return is lower) and borrowers want to issue more (real cost is lower). Both push the price down and the yield up.'],
+['sd','Government borrowing falls sharply. Which chain is correct?','Bond supply shifts left → prices rise → yields fall','Bond demand shifts left → prices fall → yields rise','Bond supply shifts left → prices fall → yields rise','Bond demand shifts right → prices rise → yields fall','The government is an issuer of bonds, so this is a supply change. Fewer bonds means higher prices and lower yields.'],
+['term','Under the expectations hypothesis, the yield curve is downward-sloping (inverted). This means…','Short-term rates are expected to fall','Short-term rates are expected to rise','Long-term bonds carry a large risk premium','Inflation is expected to rise','Long yields are averages of expected short rates. A long yield below today\'s short rate means future short rates are expected to be lower.'],
+['term','Under the liquidity premium theory, the yield curve is perfectly flat. What does the market expect?','Short-term rates to fall','Short-term rates to stay the same','Short-term rates to rise','Nothing can be inferred','Long bonds include a positive risk premium. For yields to be equal anyway, the expected short rates must be falling to offset it.'],
+['term','The 1-year yield is 3%, the 2-year is 4%, and the 3-year is 5%, with risk premiums of 0, 1, and 2 points. If all risk premiums were zero, the yield curve would be…','Flat','Upward-sloping','Downward-sloping','Steeper than before','Removing the premiums leaves 3%, 3%, 3%. The expected 1-year rate is 3% every year, so the whole slope came from risk premiums.'],
+['term','Which statement about the expectations hypothesis is true?','It cannot by itself explain why yield curves usually slope upward','It says long-term bonds must yield more than short-term bonds','It assumes investors demand extra return for holding long bonds','It implies short and long rates move in opposite directions','If only expectations mattered, the curve would slope down as often as up. The usual upward slope needs a risk premium, which is the liquidity premium theory.'],
+['spread','The Baa corporate yield rises from 7.0% to 7.8% while the 10-year Treasury rises from 3.0% to 4.5%. What happened to the risk premium on corporate bonds?','It fell, from 4.0 to 3.3 points','It rose, because the Baa yield rose','It rose, from 3.3 to 4.0 points','It was unchanged, because both yields rose','The risk spread is Baa − Treasury: 4.0 → 3.3. Investors are asking for <i>less</i> extra return, a sign of confidence.'],
+['spread','Which combination most strongly signals a coming recession?','An inverted yield curve and a widening risk spread','A steep yield curve and a narrowing risk spread','A steep yield curve and a widening risk spread','An inverted yield curve and a narrowing risk spread','An inverted curve says rates are expected to fall (weak economy). A wider risk spread says investors fear defaults.'],
+['pv','Which change would <b>raise</b> the present value of a future payment?','Receiving the same payment one year sooner','A higher interest rate','Receiving the same payment one year later','Compounding more often at the same quoted rate','Less waiting means a smaller exponent, a smaller denominator, and a larger present value. All the other changes shrink it.'],
+['comp','Investment A pays 20% in total over 5 years. Investment B pays 0.4% a month for 5 years. Which is better?','B, because it compounds to about 4.91% a year versus 3.71% for A','A, because 20% is more than 0.4%','A, because it is 4% a year versus 4.8% for B, but with less risk','They are equal once you compound','A: 1.20<sup>1/5</sup> − 1 = 3.71%. B: 1.004<sup>12</sup> − 1 = 4.91%. Over five years B returns 27.1% in total.'],
+['loan','A computer costs $2,000 and lasts 3 years. A $250 resale value lowers the required annual cash flow by about $75, not $83 (250 ÷ 3). Why?','The $250 arrives in 3 years, so it must be discounted before it is spread over the payments','Resale values are taxed','The interest rate rises when there is a resale value','Because $250 ÷ 3 ignores depreciation','PV of $250 at 10% in 3 years = $187.83. Spread over the annuity factor of 2.4869, that is about $75 a year.']
+].map(a=>({t:a[0],q:a[1],c:a.slice(2,6),e:a[6]}));
+const smcQ=s=>mc(s.t,s.q,s.c[0],s.c.slice(1),s.e);
+const TF=[
+['pv','The present value of a payment gets smaller the longer you have to wait for it.',1,'More years means a larger (1 + i)<sup>n</sup> in the denominator.'],
+['pv','If the interest rate is 10%, $110 received one year from now has a present value of $100.',1,'110 ÷ 1.10 = 100.'],
+['pv','Doubling the interest rate cuts the present value of a payment exactly in half.',0,'PV = FV ÷ (1 + i)<sup>n</sup> is not proportional to i. At one year, going from 5% to 10% only changes PV from 95.24 to 90.91.'],
+['pv','At an interest rate of zero, present value equals future value.',1,'Dividing by 1<sup>n</sup> changes nothing.'],
+['loan','The amount you can borrow equals your payment times the number of payments.',0,'That ignores interest. The loan is the <i>present value</i> of the payments, which is smaller.'],
+['loan','With monthly payments, you should discount using the annual rate divided by 12.',1,'The rate must match the payment period.'],
+['loan','A higher interest rate lets you borrow more for the same monthly payment.',0,'A higher rate discounts your payments more heavily, so you can borrow less.'],
+['loan','A machine that has some resale value needs to generate less cash each year to be worth buying.',1,'The resale value covers part of the cost, in present-value terms.'],
+['bond','When market interest rates rise, the prices of existing bonds fall.',1,'Their fixed payments are discounted at a higher rate.'],
+['bond','A bond with a 5% coupon sells for more than face value when the market rate is 8%.',0,'Coupon rate below market rate means the bond sells at a discount.'],
+['bond','A bond\'s coupon payment changes each year as market interest rates change.',0,'The coupon is fixed when the bond is issued. Only the price changes.'],
+['bond','If a bond is selling at par, its coupon rate equals the market interest rate.',1,'That is exactly the condition for price = face value.'],
+['bond','You should discount a bond\'s cash flows using its coupon rate.',0,'Use the market interest rate. The coupon rate only sets the dollar payments.'],
+['comp','A return of 1% per month is the same as 12% per year.',0,'(1.01)<sup>12</sup> − 1 = 12.68%. Monthly interest earns interest.'],
+['comp','A total return of 20% over 5 years is less than 4% per year.',1,'1.20<sup>1/5</sup> − 1 = 3.71%.'],
+['comp','A total return of 44% over 2 years is 20% per year.',1,'1.20 × 1.20 = 1.44.'],
+['risk','A 30-year bond\'s price is more sensitive to interest-rate changes than a 1-year bond\'s price.',1,'Its payments are discounted over many more years.'],
+['risk','U.S. Treasury bonds have no risk of any kind.',0,'They have essentially no default risk, but they do have interest-rate risk and inflation risk.'],
+['risk','A zero-coupon bond always sells for less than its face value when interest rates are positive.',1,'Its price is Face ÷ (1 + i)<sup>n</sup>, which is below Face whenever i &gt; 0.'],
+['real','The ex ante real interest rate uses expected inflation; the ex post real rate uses actual inflation.',1,'Ex ante = before the fact. Ex post = after the fact.'],
+['real','If inflation turns out higher than expected, lenders gain.',0,'Borrowers gain. They repay with dollars that buy less than expected.'],
+['real','With a nominal rate of 6% and inflation of 4%, the real interest rate is about 2%.',1,'6 − 4 = 2.'],
+['real','More uncertainty about future inflation makes bond yields fall.',0,'Investors demand an inflation-risk premium, so prices fall and yields rise.'],
+['sd','When the government borrows less, the supply of bonds shifts left and bond prices rise.',1,'Fewer bonds are issued. With the same demand, prices go up and yields go down.'],
+['sd','A higher bond price means a higher yield.',0,'Price and yield always move in opposite directions.'],
+['sd','If bonds become riskier, the demand curve for bonds shifts left.',1,'Savers want to hold fewer of them, so prices fall and yields rise.'],
+['term','Under the expectations hypothesis, the 2-year yield is the average of today\'s 1-year rate and next year\'s expected 1-year rate.',1,'That is the definition.'],
+['term','If the 1-year yield is 4% and the 2-year yield is 5%, the market expects next year\'s 1-year rate to be 5%.',0,'It is 2(5) − 4 = 6%. The 5% is an average of 4% and 6%.'],
+['term','The liquidity premium theory says longer-term bonds carry a risk premium.',1,'Holding long bonds is riskier, so investors must be paid extra.'],
+['term','Under the liquidity premium theory, an upward-sloping yield curve always means rates are expected to rise.',0,'A mild upward slope can come entirely from risk premiums, with rates expected to stay flat.'],
+['spread','The term spread is the 10-year Treasury yield minus the 3-month Treasury yield.',1,'It measures the slope of the yield curve.'],
+['spread','A widening risk spread means investors are becoming more confident about the economy.',0,'It means they demand more compensation for default risk, a sign of worry.'],
+['spread','An inverted yield curve is a common warning sign of recession.',1,'It means short rates are expected to fall, which usually happens when the economy weakens.'],
+['spread','If the Baa yield rises, the risk spread must have widened.',0,'Not if Treasury yields rose by more. Always compute Baa − Treasury.']
+].map(a=>({topic:a[0],q:a[1],choices:['True','False'],answer:a[2]?0:1,explain:a[3]}));
+const BL=[
+['bond','When market interest rates rise, bond prices ___.',[['fall','falls','decrease','drop','decline','go down','down']]],
+['bond','A bond sells at ___ when its coupon rate equals the market interest rate.',[['par','face value','face','par value']]],
+['bond','If the coupon rate is below the market rate, the bond sells at a ___; if it is above, the bond sells at a ___.',[['discount'],['premium']]],
+['pv','$100 received in 2 years at 10% is worth $___ today.',[82.64]],
+['pv','The further in the future a payment is, the ___ its present value.',[['lower','smaller','less']]],
+['loan','The size of a loan equals the ___ value of all its payments.',[['present']]],
+['loan','For monthly payments, divide the annual rate by ___ and multiply the number of years by ___.',[12,12]],
+['comp','A return of 0.5% per month compounds to ___% per year (two decimals).',[6.17]],
+['comp','A total return of 21% over 2 years is ___% per year.',[10]],
+['real','Real interest rate = nominal interest rate − ___.',[['inflation','expected inflation','inflation rate','the inflation rate']]],
+['real','A nominal rate of 7% with 3% expected inflation gives an ex ante real rate of ___%.',[4]],
+['real','When inflation is higher than expected, ___ gain and ___ lose.',[['borrowers','borrower'],['lenders','lender']]],
+['risk','The longer a bond\'s maturity, the ___ its price moves when interest rates change.',[['more','greater','larger']]],
+['risk','A 1-year zero-coupon bond with a $100 face value costs $___ when the interest rate is 4%.',[96.15]],
+['sd','When the government borrows less, the bond ___ curve shifts ___, so prices rise and yields ___.',[['supply'],['left','leftward'],['fall','decrease','drop','decline']]],
+['term','Under the expectations hypothesis, a long-term yield is the ___ of current and expected future short-term rates.',[['average','mean']]],
+['term','If the 1-year rate is 4% and it is expected to be 6% next year, the 2-year yield is ___%.',[5]],
+['term','If the 1-year yield is 3% and the 2-year yield is 4%, the expected 1-year rate next year is ___%.',[5]],
+['term','The liquidity premium theory adds a ___ premium to the average of expected short rates.',[['risk','liquidity','term']]],
+['spread','The 10-year Treasury yield minus the 3-month Treasury yield is the ___ spread.',[['term']]],
+['spread','A corporate bond yield minus the Treasury yield is the ___ spread, and it tends to ___ before a recession.',[['risk','default','credit'],['widen','rise','increase','grow','widens']]]
+];
+const PAIRS=[['Present value','What future money is worth today'],['Coupon','The fixed yearly payment a bond makes'],['Face value','The amount a bond repays at maturity'],['Par','Price equals face value'],['Discount bond','Sells for less than face value'],['Premium bond','Sells for more than face value'],['Zero-coupon bond','Makes one payment, at maturity only'],['Ex ante real rate','Nominal rate minus expected inflation'],['Ex post real rate','Nominal rate minus actual inflation'],['Term spread','Long Treasury yield minus short Treasury yield'],['Risk spread','Corporate yield minus Treasury yield'],['Expectations hypothesis','Long yields are averages of expected short rates'],['Liquidity premium','Extra yield for holding a longer bond'],['Interest-rate risk','Chance a bond\'s price falls when rates rise'],['Inverted yield curve','Short-term yields above long-term yields'],['Annuity factor','Present value of $1 paid every period']];
+
+/* ---------- interactive widgets ---------- */
+function sl(host,label,min,max,step,val,f){const w=document.createElement('label');w.className='sl';w.innerHTML=`<span>${label}</span><input type="range" min="${min}" max="${max}" step="${step}" value="${val}"><b></b>`;host.appendChild(w);const i=$('input',w),b=$('b',w);const o={get v(){return +i.value},set(x){i.value=x;b.textContent=f(+i.value)},on:null};i.addEventListener('input',()=>{b.textContent=f(+i.value);o.on&&o.on()});b.textContent=f(val);return o}
+function setBars(box,items,H=140){while(box.children.length>items.length)box.lastChild.remove();while(box.children.length<items.length)box.insertAdjacentHTML('beforeend','<div class="col"><div class="bv"></div><div class="bw"><div class="bar" style="height:0"></div></div><div class="bl"></div></div>');
+ items.forEach((it,k)=>{const c=box.children[k],b=$('.bar',c),w=$('.bw',c);$('.bv',c).textContent=it.top||'';$('.bl',c).textContent=it.bot||'';b.className='bar '+(it.cls||'');w.style.height=H+'px';w.classList.toggle('ghost',!!it.ghost);requestAnimationFrame(()=>requestAnimationFrame(()=>{b.style.height=Math.max(0,Math.min(1,it.h))*H+'px'}))})}
+const pc=v=>v+'%',yr=v=>v+(v==1?' year':' years');
+const W={
+pv(h){h.innerHTML='<div class="ctrl"></div><div class="bars"></div><p class="cap"></p><button class="btn sm">▶ Play it backwards, year by year</button>';
+ const c=$('.ctrl',h),bars=$('.bars',h),cap=$('.cap',h);const A=sl(c,'Future payment',50,1000,50,100,v=>'$'+v),I=sl(c,'Interest rate',1,20,1,10,pc),N=sl(c,'Years you wait',1,10,1,5,yr);let tm=[];
+ function draw(rev){const n=N.v,i=I.v/100,a=A.v,it=[];for(let t=0;t<=n;t++){const v=a/Math.pow(1+i,n-t),s=rev===undefined||t>=n-rev;it.push({h:s?v/a:0,top:s?'$'+v.toFixed(2):'',bot:t?'Year '+t:'Today',cls:t?'':'hot'})}setBars(bars,it);
+  const pv=a/Math.pow(1+i,n);cap.innerHTML=rev===undefined||rev>=n?`<b>$${a}</b> in ${yr(n)} is worth <b>${m(pv)}</b> today: ${a} ÷ ${g(1+i)}<sup>${n}</sup>. The denominator ate <b>${m(a-pv)}</b>.`:`Moving back one year at a time: divide by ${g(1+i)} at every step…`}
+ const stop=()=>{tm.forEach(clearTimeout);tm=[]};A.on=I.on=N.on=()=>{stop();draw()};
+ $('button',h).onclick=()=>{stop();for(let k=0;k<=N.v;k++)tm.push(setTimeout(()=>draw(k),k*650))};draw()},
+loan(h){h.innerHTML='<div class="chips"><button class="chip on" data-m="0">Pay once a year</button><button class="chip" data-m="1">Pay every month</button></div><div class="ctrl"></div><div class="stats"></div><div class="hm" style="height:26px;margin-top:16px;overflow:hidden;display:flex"><div class="pa" style="background:var(--accent);height:100%;transition:width .6s"></div><div style="flex:1;background:var(--warn);opacity:.7"></div></div><p class="small mute" style="margin:0"><b style="color:var(--accent)">■</b> loan you receive &nbsp; <b style="color:var(--warn)">■</b> interest you pay</p><p class="cap"></p>';
+ const c=$('.ctrl',h);let mo=0;const P=sl(c,'You can pay per year',1200,12000,600,4800,v=>'$'+v.toLocaleString()),I=sl(c,'Interest rate',1,15,.1,7.9,v=>v.toFixed(1)+'%'),N=sl(c,'Years',1,10,1,6,yr);
+ function draw(){const k=mo?12:1,pay=P.v/k,r=I.v/100/k,n=N.v*k,L=pay*AF(r,n),tot=pay*n;
+  $('.stats',h).innerHTML=`<div class="stat"><span>Loan you can get</span><b>${m(L)}</b></div><div class="stat"><span>Total you pay back</span><b>${m(tot)}</b></div><div class="stat"><span>Interest</span><b>${m(tot-L)}</b></div>`;$('.pa',h).style.width=L/tot*100+'%';
+  $('.cap',h).innerHTML=`<span class="fx" style="display:block;font-size:16px">Loan = ${fr(g(pay),g(1+r))} + ${fr(g(pay),g(1+r)+'<sup>2</sup>')} + … + ${fr(g(pay),g(1+r)+'<sup>'+n+'</sup>')} = <b>${m(L)}</b></span>${mo?'Paying monthly gets each dollar to the lender sooner, so the same yearly budget supports a bigger loan.':'Try switching to monthly payments and watch the loan grow.'}`}
+ $$('.chip',h).forEach(b=>b.onclick=()=>{mo=+b.dataset.m;$$('.chip',h).forEach(x=>x.classList.toggle('on',x===b));draw()});P.on=I.on=N.on=draw;draw()},
+bond(h){h.innerHTML='<div class="ctrl"></div><div class="bars"></div><p class="small mute" style="margin:8px 0 0">Striped = the payment you are promised. Solid = what it is worth today.</p><div class="stats"></div><div class="saw"><div class="beam"><span class="l">Interest rate</span><span class="r">Bond price</span></div><div class="piv"></div></div><p class="cap"></p>';
+ const c=$('.ctrl',h);const C=sl(c,'Coupon rate',0,12,.5,5,pc),I=sl(c,'Market interest rate',1,15,.5,10,pc),N=sl(c,'Years to maturity',1,12,1,5,yr);
+ function draw(){const cp=C.v*10,r=I.v/100,n=N.v,it=[];for(let t=1;t<=n;t++){const d=Math.pow(1+r,-t);it.push({h:d,top:'$'+(cp*d).toFixed(0),bot:'Yr '+t,ghost:1})}const d=Math.pow(1+r,-n);it.push({h:d,top:'$'+(1000*d).toFixed(0),bot:'Face',ghost:1,cls:'hot'});setBars($('.bars',h),it,120);
+  const pc_=cp*AF(r,n),pf=1000*d,P=pc_+pf,st=Math.abs(P-1000)<.005?['n','At par']:P<1000?['r','Discount']:['g','Premium'];
+  $('.stats',h).innerHTML=`<div class="stat"><span>PV of coupons</span><b>${m(pc_)}</b></div><div class="stat"><span>PV of face value</span><b>${m(pf)}</b></div><div class="stat"><span>Bond price</span><b>${m(P)}</b> <span class="pill ${st[0]}" style="display:inline-block">${st[1]}</span></div>`;
+  $('.beam',h).style.transform=`rotate(${Math.max(-15,Math.min(15,(I.v-C.v)*2.2))}deg)`;
+  $('.cap',h).innerHTML=I.v>C.v?`The market pays ${I.v}% but this bond only pays ${C.v}%, so nobody will pay full price. It sells at a <b>discount</b>.`:I.v<C.v?`This bond pays ${C.v}% while the market only pays ${I.v}%, so buyers pay extra for it. It sells at a <b>premium</b>.`:'Coupon rate = market rate, so the bond sells for exactly its face value: <b>par</b>.'}
+ C.on=I.on=N.on=draw;draw()},
+comp(h){h.innerHTML='<div class="ctrl"></div><svg class="chart" viewBox="0 0 420 220"></svg><p class="cap"></p><button class="btn sm">▶ Play</button><div class="lab" style="margin-top:22px">Converters</div><div class="inl">A total return of <input id="ca" type="number" value="20">% over <input id="cb" type="number" value="5"> years = <b id="co"></b></div><div class="inl"><input id="cm" type="number" value="0.4" step="0.1">% per month = <b id="cp"></b></div>';
+ const c=$('.ctrl',h),svg=$('svg',h);const I=sl(c,'Annual return',1,15,1,5,pc),N=sl(c,'Years',5,40,1,20,yr);
+ function draw(anim){const r=I.v/100,n=N.v,mx=100*Math.pow(1+r,n),X=t=>40+t/n*340,Y=v=>195-(v-100)/(mx-100)*165;let a='',b='';for(let t=0;t<=n;t++){a+=(t?'L':'M')+X(t)+' '+Y(100*Math.pow(1+r,t));b+=(t?'L':'M')+X(t)+' '+Y(100*(1+r*t))}
+  svg.innerHTML=`<line class="ax" x1="40" y1="195" x2="390" y2="195"/><line class="ax" x1="40" y1="20" x2="40" y2="195"/><text x="34" y="199" text-anchor="end">$100</text><text x="40" y="212">Today</text><text x="380" y="212" text-anchor="end">Year ${n}</text><path class="ln alt" d="${b}"/><path class="ln main" d="${a}"/><text class="mt" x="384" y="${Y(mx)-8}" text-anchor="end">Compound ${m0(mx)}</text><text x="384" y="${Y(100*(1+r*n))+16}" text-anchor="end">Simple ${m0(100*(1+r*n))}</text>`;
+  if(anim){const p=$('.main',svg),L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=L;p.getBoundingClientRect();p.style.transition='stroke-dashoffset 1.6s ease-in';p.style.strokeDashoffset=0}
+  $('.cap',h).innerHTML=`$100 at ${I.v}% for ${yr(n)}: simple interest gives ${m0(100*(1+r*n))}, compounding gives <b>${m0(mx)}</b>. The extra <b>${m0(mx-100*(1+r*n))}</b> is interest earned on interest.`}
+ function conv(){const a=+$('#ca',h).value,b=+$('#cb',h).value,mo=+$('#cm',h).value;$('#co',h).innerHTML=b>0&&a>-100?`${p2((Math.pow(1+a/100,1/b)-1)*100)} per year <span class="mute">(not ${p2(a/b)})</span>`:'—';$('#cp',h).innerHTML=`${p2((Math.pow(1+mo/100,12)-1)*100)} per year <span class="mute">(not ${p2(mo*12)})</span>`}
+ I.on=N.on=()=>draw();$('button',h).onclick=()=>draw(1);$$('input[type=number]',h).forEach(i=>i.oninput=conv);draw(1);conv()},
+risk(h){h.innerHTML='<div class="ctrl"></div><div class="bars"></div><p class="cap"></p><div class="chips" style="margin:14px 0 0"><button class="chip" data-a="1.4" data-b="5">Homework: 1.4% → 5%</button><button class="chip" data-a="6" data-b="7">6% → 7%</button><button class="chip" data-a="5" data-b="2">Rates fall: 5% → 2%</button></div>';
+ const c=$('.ctrl',h);const A=sl(c,'Rate when you bought',.5,10,.1,1.4,v=>v.toFixed(1)+'%'),B=sl(c,'Rate today',.5,10,.1,5,v=>v.toFixed(1)+'%');
+ function draw(){const a=A.v/100,b=B.v/100,ms=[1,5,10,30],pr=ms.map(n=>100*(a*AF(b,n)+Math.pow(1+b,-n))),mx=Math.max(100,...pr);
+  setBars($('.bars',h),pr.map((p,k)=>({h:p/mx,top:(p>=100?'+':'−')+Math.abs(p-100).toFixed(1)+'%',bot:ms[k]+'-year bond',cls:p<99.95?'red':'hot',ghost:1})),150);
+  $('.cap',h).innerHTML=Math.abs(a-b)<1e-9?'No change in rates, no change in prices. Move a slider.':`Each bond started at $100. After rates go from ${A.v.toFixed(1)}% to ${B.v.toFixed(1)}%, the 1-year bond is worth <b>${m(pr[0])}</b> but the 30-year bond is worth <b>${m(pr[3])}</b>. Same rate change, ${Math.abs((pr[3]-100)/(pr[0]-100)).toFixed(0)}× the move.`}
+ $$('.chip',h).forEach(x=>x.onclick=()=>{A.set(x.dataset.a);B.set(x.dataset.b);draw()});A.on=B.on=draw;draw()},
+real(h){h.innerHTML='<div class="ctrl"></div><div class="stats"></div><div class="tug"><span style="color:var(--good)">◀ Lender wins</span><span style="color:var(--accent)">Borrower wins ▶</span><i></i></div><p class="cap"></p>';
+ const c=$('.ctrl',h);const N=sl(c,'Nominal interest rate',0,12,.5,6,pc),E=sl(c,'Expected inflation',0,10,.5,5,pc),A=sl(c,'Actual inflation',0,10,.5,4,pc);
+ function draw(){const ea=N.v-E.v,ep=N.v-A.v,d=A.v-E.v;$('.stats',h).innerHTML=`<div class="stat"><span>Ex ante real rate (planned)</span><b>${g(ea)}%</b></div><div class="stat"><span>Ex post real rate (actual)</span><b>${g(ep)}%</b></div>`;
+  $('.tug i',h).style.left=Math.max(8,Math.min(92,50+d*9))+'%';
+  $('.cap',h).innerHTML=d===0?'Inflation came in exactly as expected. Nobody wins or loses.':d<0?`Inflation was <b>lower</b> than expected. The lender earns a real ${g(ep)}% instead of ${g(ea)}%. <b>The lender gains</b>, the borrower loses.`:`Inflation was <b>higher</b> than expected. The borrower pays a real ${g(ep)}% instead of ${g(ea)}%. <b>The borrower gains</b>, the lender loses.`}
+ N.on=E.on=A.on=draw;draw()},
+sd(h){const ev=[['Government borrows less',0,-55,'The government issues fewer bonds, so <b>supply shifts left</b>.'],['Government borrows more',0,55,'The government issues more bonds, so <b>supply shifts right</b>.'],['Savers get wealthier',55,0,'People have more money to put into bonds, so <b>demand shifts right</b>.'],['Bonds get riskier',-55,0,'Savers want fewer bonds, so <b>demand shifts left</b>.'],['Expected inflation rises',-40,40,'Savers want fewer bonds (<b>demand left</b>) and borrowers want to issue more (<b>supply right</b>).'],['Reset',0,0,'']];
+ h.innerHTML=`<div class="chips">${ev.map((e,k)=>`<button class="chip" data-k="${k}">${e[0]}</button>`).join('')}</div><svg class="chart sd" viewBox="0 0 340 250" style="max-width:420px"><defs><clipPath id="sdc"><rect x="41" y="14" width="280" height="195"/></clipPath></defs><line class="ax" x1="40" y1="14" x2="40" y2="210"/><line class="ax" x1="40" y1="210" x2="322" y2="210"/><text x="6" y="10">Price of bonds</text><text x="322" y="230" text-anchor="end">Quantity of bonds</text><g clip-path="url(#sdc)"><line class="gh" x1="50" y1="40" x2="290" y2="200"/><line class="gh" x1="50" y1="200" x2="290" y2="40"/><g class="mv D"><line class="dline" x1="50" y1="40" x2="290" y2="200"/><text class="dt" x="236" y="192">Demand</text></g><g class="mv Sg"><line class="sline" x1="50" y1="200" x2="290" y2="40"/><text class="st" x="246" y="40">Supply</text></g><g class="mv P"><line class="pl" x1="-300" y1="120" x2="170" y2="120"/><circle class="dot" cx="170" cy="120" r="7"/></g></g></svg><p class="cap">Pick an event to see what it does to bond prices and yields.</p>`;
+ $$('.chip',h).forEach(b=>b.onclick=()=>{const [nm,dx,sx,tx]=ev[b.dataset.k];$$('.chip',h).forEach(x=>x.classList.toggle('on',x===b&&nm!=='Reset'));$('.D',h).style.transform=`translate(${dx}px,0)`;$('.Sg',h).style.transform=`translate(${sx}px,0)`;const ey=(sx-dx)/3;$('.P',h).style.transform=`translate(${(dx+sx)/2}px,${ey}px)`;
+  $('.cap',h).innerHTML=nm==='Reset'?'Pick an event to see what it does to bond prices and yields.':`${tx} The price ${ey<0?'<span class="pill g">rises</span>':'<span class="pill r">falls</span>'} so the yield ${ey<0?'<span class="pill r">falls</span>':'<span class="pill g">rises</span>'}.`})},
+term(h){const pre=[['Rates expected to rise',[4,5,6,6,0]],['Rates expected to fall',[6,5,4,3,0]],['Flat expectations + premium',[3,3,3,3,.5]]];
+ h.innerHTML=`<div class="chips">${pre.map((p,k)=>`<button class="chip" data-k="${k}">${p[0]}</button>`).join('')}</div><div class="ctrl"></div><svg class="chart" viewBox="0 0 420 230"></svg><p class="small mute" style="text-align:center;margin:4px 0 0"><b style="color:var(--accent)">━</b> yield curve &nbsp; <b>┅</b> expected 1-year rates</p><p class="cap"></p>`;
+ const c=$('.ctrl',h),f=v=>v.toFixed(2)+'%',lb=['1-year rate today','Expected next year','Expected in 2 years','Expected in 3 years'],r=lb.map((l,k)=>sl(c,l,0,10,.25,[4,5,6,6][k],f)),rp=sl(c,'Risk premium per extra year',0,1,.05,0,f);
+ function draw(){const e=r.map(x=>x.v),y=e.map((_,n)=>e.slice(0,n+1).reduce((a,b)=>a+b,0)/(n+1)+rp.v*n),mx=Math.max(...e,...y,1)+1.2,X=n=>70+n*100,Y=v=>195-v/mx*170;
+  $('svg',h).innerHTML=`<line class="ax" x1="40" y1="195" x2="400" y2="195"/>`+[0,1,2,3].map(n=>`<text x="${X(n)}" y="213" text-anchor="middle">${n+1}-year</text>`).join('')+`<polyline class="ln alt" points="${e.map((v,n)=>X(n)+','+Y(v)).join(' ')}"/><polyline class="ln main" points="${y.map((v,n)=>X(n)+','+Y(v)).join(' ')}"/>`+y.map((v,n)=>`<circle class="main" cx="${X(n)}" cy="${Y(v)}" r="5"/><text class="mt" x="${X(n)}" y="${Y(v)-12}" text-anchor="middle">${v.toFixed(2)}%</text>`).join('');
+  const s=y[3]-y[0];$('.cap',h).innerHTML=`2-year yield = (${g(e[0])} + ${g(e[1])}) ÷ 2${rp.v?' + '+g(rp.v):''} = <b>${y[1].toFixed(2)}%</b>. The curve is <b>${s>.05?'upward-sloping':s<-.05?'inverted (downward-sloping)':'flat'}</b>${rp.v&&e.every(v=>v===e[0])?': rates are not expected to change, so the whole slope is risk premium.':s>.05?'.':s<-.05?': the market expects rates to fall.':'.'}`}
+ $$('.chip',h).forEach(b=>b.onclick=()=>{const v=pre[b.dataset.k][1];r.forEach((x,k)=>x.set(v[k]));rp.set(v[4]);draw()});r.forEach(x=>x.on=draw);rp.on=draw;draw()},
+spread(h){const D=[['January',1,3,7],['February',1.05,3.5,7.2],['March',1.1,4,7.5],['April',1.2,4.3,7.7],['May',1.25,4.5,7.8]];
+ h.innerHTML='<div class="ctrl"></div><div class="stats"></div><div style="margin-top:14px"><div class="small"><b>Term spread</b> <span class="mute">(left of the line = inverted)</span></div><div class="hm"><u style="left:28.6%"></u><i class="t"></i></div><div class="small"><b>Risk spread</b> <span class="mute">(further right = more fear)</span></div><div class="hm"><i class="r"></i></div></div><p class="cap"></p><button class="btn sm">▶ Play January → May (homework table)</button>';
+ const c=$('.ctrl',h),f=v=>v.toFixed(2)+'%';const A=sl(c,'3-month T-bill',0,8,.05,1.25,f),B=sl(c,'10-year Treasury',0,10,.05,4.5,f),C=sl(c,'Baa corporate bond',0,14,.05,7.8,f);let prev=null,tm=[];
+ function draw(lbl){const t=B.v-A.v,k=C.v-B.v;$('.stats',h).innerHTML=`<div class="stat"><span>Term spread</span><b>${t.toFixed(2)}</b></div><div class="stat"><span>Risk spread</span><b>${k.toFixed(2)}</b></div>`;$('.hm .t',h).style.left=Math.max(0,Math.min(100,(t+2)/7*100))+'%';$('.hm .r',h).style.left=Math.max(0,Math.min(100,k/8*100))+'%';
+  let s=t<0?'The yield curve is <b>inverted</b>: a classic recession warning. ':'The term spread is <b>positive</b>: markets expect rates and growth to rise. ';s+=k>=4.5?'The risk spread is <b>wide</b>: investors are worried about defaults.':'The risk spread is <b>modest</b>: investors are relaxed about defaults.';
+  if(lbl&&prev){s=`<b>${lbl}:</b> term spread ${t>prev[0]?'widening ↑':'narrowing ↓'}, risk spread ${k<prev[1]?'narrowing ↓':'widening ↑'}. `+(t>prev[0]&&k<prev[1]?'Both say <span class="pill g">boom</span>':'')}else if(lbl)s=`<b>${lbl}:</b> starting point.`;prev=[t,k];$('.cap',h).innerHTML=s}
+ A.on=B.on=C.on=()=>{tm.forEach(clearTimeout);prev=null;draw()};
+ $('button',h).onclick=()=>{tm.forEach(clearTimeout);prev=null;tm=D.map((d,k)=>setTimeout(()=>{A.set(d[1]);B.set(d[2]);C.set(d[3]);draw(d[0])},k*1100))};draw()}
+};
+
+/* ---------- shared question card ---------- */
+function qCard(host,q,done){let ans=false;host.innerHTML=`<div class="qtag">${T[q.topic]}</div><div class="qq">${q.q}</div><div class="opts">${q.choices.map((c,k)=>`<button class="opt" data-k="${k}"><i>${q.choices.length===2?'TF'[k]:'ABCD'[k]}</i><span>${c}</span></button>`).join('')}</div><div class="fb"></div>`;
+ $$('.opt',host).forEach(b=>b.onclick=()=>{if(ans)return;ans=true;const k=+b.dataset.k,ok=k===q.answer;$$('.opt',host).forEach((o,j)=>{o.disabled=true;if(j===q.answer)o.classList.add('ok');else if(j===k)o.classList.add('no')});const fb=$('.fb',host);fb.className='fb '+(ok?'ok':'no');fb.innerHTML=`<b class="h">${ok?'Correct':'Not quite'}</b>${q.explain}`;record(q.topic,ok);done&&done(ok)})}
+let usedS=[],usedT=[];
+function nextQ(topic){const gk=(topic?GT[topic]:Object.values(GT).flat()),ss=SMC.filter(s=>!topic||s.t===topic);let pool=ss.filter(s=>!usedS.includes(s));if(!pool.length){usedS=usedS.filter(s=>!ss.includes(s));pool=ss}
+ if(pool.length&&Math.random()<.45){const s=pick(pool);usedS.push(s);return smcQ(s)}return GEN[pick(gk)]()}
+
+/* ---------- pages ---------- */
+const TABS=[['home','Home'],['learn','Learn'],['cards','Flashcards'],['practice','Practice'],['blanks','Fill in'],['tf','True / False'],['match','Match'],['test','Tests'],['sheet','Formulas']];
+const PAGE={};
+function go(t){$$('section').forEach(s=>s.classList.toggle('on',s.id===t));$$('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));curTab=t;PAGE[t]&&PAGE[t]();window.scrollTo(0,0)}
+let curTab='home';
+
+PAGE.home=()=>{const ln=TK.filter(k=>S.learned[k]).length,kn=CARDS.filter((c,i)=>(S.cards['c'+i]||{}).ivl>=1).length,st=Object.values(S.stat).reduce((a,b)=>[a[0]+b[0],a[1]+b[1]],[0,0]),acc=st[1]?Math.round(st[0]/st[1]*100):0,bt=S.best.test||0;
+ $('#home').innerHTML=`<div class="hero"><h1>Bonds &amp; Loans,<br>made simple.</h1><p>Everything from your homework in one place. Follow the four steps in order, or jump to whatever you need.</p></div>
+ <div class="grid g4">
+ <button class="step" data-go="learn"><div class="n">1</div><b>Learn</b><span class="mute small">9 short lessons with formulas and live animations</span><div class="meter"><i style="width:${ln/9*100}%"></i></div><span class="small mute">${ln} of 9 lessons done</span></button>
+ <button class="step" data-go="cards"><div class="n">2</div><b>Flashcards</b><span class="mute small">Spaced repetition, like Anki</span><div class="meter"><i style="width:${kn/CARDS.length*100}%"></i></div><span class="small mute">${kn} of ${CARDS.length} cards known</span></button>
+ <button class="step" data-go="practice"><div class="n">3</div><b>Practice</b><span class="mute small">Endless problems with tricky choices</span><div class="meter"><i style="width:${acc}%"></i></div><span class="small mute">${st[1]?acc+'% correct on '+st[1]+' questions':'No questions answered yet'}</span></button>
+ <button class="step" data-go="test"><div class="n">4</div><b>Test yourself</b><span class="mute small">Practice tests and timed exams</span><div class="meter"><i style="width:${bt}%"></i></div><span class="small mute">${bt?'Best score: '+bt+'%':'No test taken yet'}</span></button>
+ </div>
+ <div class="more"><button class="btn ghost" data-go="blanks">Fill in the blanks</button><button class="btn ghost" data-go="tf">True / False</button><button class="btn ghost" data-go="match">Matching game</button><button class="btn ghost" data-go="sheet">Formula sheet</button></div>
+ <div class="card" style="margin-top:24px"><div class="lab">Your accuracy by topic</div>${TK.map(k=>{const s=S.stat[k]||[0,0],p=s[1]?Math.round(s[0]/s[1]*100):0;return `<div style="display:grid;grid-template-columns:190px 1fr 60px;gap:12px;align-items:center;font-size:14px;font-weight:600;padding:5px 0"><span>${T[k]}</span><div class="meter" style="margin:0"><i style="width:${p}%;background:${!s[1]?'var(--line)':p>=80?'var(--good)':p>=50?'var(--warn)':'var(--bad)'}"></i></div><span class="mute" style="text-align:right">${s[1]?p+'%':'—'}</span></div>`}).join('')}<p class="small mute" style="margin:12px 0 0">Progress is saved in this browser. <a href="#" id="reset" style="color:inherit">Reset everything</a></p></div>`;
+ $$('[data-go]',$('#home')).forEach(b=>b.onclick=()=>go(b.dataset.go));
+ $('#reset').onclick=e=>{e.preventDefault();if(confirm('Erase all saved progress?')){S={cards:{},learned:{},best:{},stat:{},theme:S.theme};save();go('home')}}};
+
+let curTopic='pv';
+PAGE.learn=()=>{$('#tlist').innerHTML=TK.map((k,i)=>`<button data-k="${k}" class="${k===curTopic?'on':''} ${S.learned[k]?'done':''}"><span class="d">${S.learned[k]?'✓':''}</span>${i+1}. ${T[k]}</button>`).join('');$$('#tlist button').forEach(b=>b.onclick=()=>{curTopic=b.dataset.k;PAGE.learn();window.scrollTo(0,0)});
+ const L=LESSONS[curTopic],i=TK.indexOf(curTopic),el=$('#lesson');
+ el.innerHTML=`<div><div class="lab">Lesson ${i+1} of 9</div><h2>${T[curTopic]}</h2><p class="idea">${L.idea}</p></div>
+ <div class="card"><div class="lab">Formulas</div>${L.fx.map(f=>`<div class="fx"><small>${f[0]}</small>${f[1]}</div>`).join('')}</div>
+ <div class="card"><div class="lab">How to do it</div><ol class="steps">${L.steps.map(s=>`<li>${s}</li>`).join('')}</ol></div>
+ <div class="card"><div class="lab">Try it: ${L.wt}</div><div class="wg"></div></div>
+ <div class="ex"><b class="t">Worked example</b><br>${L.ex}</div>
+ <div class="warnb"><b class="t">Common mistakes</b><ul>${L.bad.map(s=>`<li>${s}</li>`).join('')}</ul></div>
+ <div class="card"><div class="lab">Quick check</div><div class="qc"></div><button class="btn sm ghost another" style="margin-top:14px">Another question</button></div>
+ <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn mark">${S.learned[curTopic]?'✓ Marked as learned':'Mark as learned'}</button>${i<8?'<button class="btn ghost nx">Next lesson →</button>':'<button class="btn ghost nx">Go to flashcards →</button>'}</div>`;
+ W[curTopic]($('.wg',el));const nq=()=>qCard($('.qc',el),nextQ(curTopic));nq();$('.another',el).onclick=nq;
+ $('.mark',el).onclick=()=>{S.learned[curTopic]=!S.learned[curTopic];save();PAGE.learn()};
+ $('.nx',el).onclick=()=>{S.learned[curTopic]=true;save();if(i<8){curTopic=TK[i+1];go('learn')}else go('cards')}};
+
+/* flashcards */
+const MIN=6e4,DAY=864e5;let fcTopic='',fcQ=[],fcFlip=false;
+const cs=id=>S.cards[id]||(S.cards[id]={ivl:0,due:0,seen:0});
+const fmtI=ms=>ms<36e5?Math.max(1,Math.round(ms/MIN))+' min':ms<DAY?Math.round(ms/36e5)+' hr':Math.round(ms/DAY)+' d';
+const nextI=(c,r)=>r===1?MIN:r===2?(c.ivl<1?6*MIN:c.ivl*1.2*DAY):r===3?(c.ivl<1?DAY:c.ivl*2.5*DAY):(c.ivl<1?4*DAY:c.ivl*4*DAY);
+function fcBuild(all){const now=Date.now();fcQ=CARDS.map((c,i)=>'c'+i).filter(id=>(!fcTopic||CARDS[+id.slice(1)][0]===fcTopic)&&(all||cs(id).due<=now));fcQ.sort((a,b)=>(cs(b).seen>0)-(cs(a).seen>0))}
+PAGE.cards=()=>{fcBuild();fcRender()};
+function fcRender(){const el=$('#cards'),ids=CARDS.map((c,i)=>'c'+i).filter(id=>!fcTopic||CARDS[+id.slice(1)][0]===fcTopic),now=Date.now(),nw=ids.filter(i=>!cs(i).seen).length,lr=ids.filter(i=>cs(i).seen&&cs(i).ivl<1).length,kn=ids.filter(i=>cs(i).ivl>=1).length;
+ let h=`<div class="qwrap"><h2>Flashcards</h2><p class="mute">Click the card to flip it, then rate how well you knew it. Cards you miss come back sooner. Keys: Space to flip, 1–4 to rate.</p><div class="chips"><button class="chip ${fcTopic?'':'on'}" data-t="">All topics</button>${TK.map(k=>`<button class="chip ${fcTopic===k?'on':''}" data-t="${k}">${T[k]}</button>`).join('')}</div>
+ <div class="counts"><span style="color:var(--accent)">New <b>${nw}</b></span><span style="color:var(--warn)">Learning <b>${lr}</b></span><span style="color:var(--good)">Known <b>${kn}</b></span><span class="mute">In this session <b>${fcQ.length}</b></span></div>`;
+ if(!fcQ.length){const nx=Math.min(...ids.map(i=>cs(i).due));h+=`<div class="card" style="text-align:center;padding:44px 22px"><h2>All caught up</h2><p class="mute">No cards are due right now.${isFinite(nx)&&nx>now?' The next one is due in '+fmtI(nx-now)+'.':''}</p><button class="btn" id="fcall">Study them all anyway</button> <button class="btn ghost" id="fcreset">Reset this deck</button></div></div>`;el.innerHTML=h}
+ else{const id=fcQ[0],c=CARDS[+id.slice(1)],st=cs(id);h+=`<div class="fc ${fcFlip?'flip':''}" id="fc"><div class="fci"><div class="fcf"><span class="fct">${T[c[0]]}</span>${c[1]}<span class="fch">Click to show the answer</span></div><div class="fcb"><span class="fct">${T[c[0]]}</span><div>${c[2]}</div></div></div></div>
+ <div class="rate" id="rate" style="visibility:${fcFlip?'visible':'hidden'}">${[['Again',1],['Hard',2],['Good',3],['Easy',4]].map(([n,r])=>`<button class="r${r}" data-r="${r}">${n}<small>${fmtI(nextI(st,r))}</small></button>`).join('')}</div></div>`;el.innerHTML=h;
+  $('#fc').onclick=()=>{fcFlip=!fcFlip;$('#fc').classList.toggle('flip',fcFlip);$('#rate').style.visibility=fcFlip?'visible':'hidden'};$$('#rate button').forEach(b=>b.onclick=()=>fcRate(+b.dataset.r))}
+ $$('.chip',el).forEach(b=>b.onclick=()=>{fcTopic=b.dataset.t;fcFlip=false;fcBuild();fcRender()});
+ if($('#fcall'))$('#fcall').onclick=()=>{fcBuild(1);fcRender()};if($('#fcreset'))$('#fcreset').onclick=()=>{ids.forEach(i=>delete S.cards[i]);save();fcBuild();fcRender()}}
+function fcRate(r){if(!fcQ.length||!fcFlip)return;const id=fcQ.shift(),c=cs(id),iv=nextI(c,r);c.seen++;c.due=Date.now()+iv;c.ivl=iv>=DAY?iv/DAY:0;if(r===1)fcQ.splice(Math.min(3,fcQ.length),0,id);else if(r===2&&iv<DAY)fcQ.splice(Math.min(7,fcQ.length),0,id);save();fcFlip=false;fcRender()}
+document.addEventListener('keydown',e=>{if(curTab!=='cards'||!$('#fc'))return;if(e.code==='Space'){e.preventDefault();$('#fc').click()}else if(fcFlip&&'1234'.includes(e.key))fcRate(+e.key)});
+
+/* practice + true/false drills */
+function drill(id,title,blurb,getQ,topics){const st={t:'',n:0,ok:0,streak:0};PAGE[id]=()=>{const el=$('#'+id);
+ el.innerHTML=`<div class="qwrap"><h2>${title}</h2><p class="mute">${blurb}</p>${topics?`<div class="chips"><button class="chip ${st.t?'':'on'}" data-t="">All topics</button>${TK.map(k=>`<button class="chip ${st.t===k?'on':''}" data-t="${k}">${T[k]}</button>`).join('')}</div>`:''}<div class="bar2"><span class="score">Score <span class="sc">${st.ok} / ${st.n}</span></span><span class="pill n stk">Streak ${st.streak}</span></div><div class="card"><div class="q"></div><button class="btn nxt" style="margin-top:16px;display:none">Next question →</button></div></div>`;
+ const nq=()=>{$('.nxt',el).style.display='none';qCard($('.q',el),getQ(st.t),ok=>{st.n++;if(ok){st.ok++;st.streak++}else st.streak=0;$('.sc',el).textContent=`${st.ok} / ${st.n}`;$('.stk',el).textContent='Streak '+st.streak;$('.nxt',el).style.display=''})};
+ $('.nxt',el).onclick=nq;$$('.chip',el).forEach(b=>b.onclick=()=>{st.t=b.dataset.t;PAGE[id]()});nq()}}
+drill('practice','Practice problems','New numbers every time. The wrong choices are the answers you get from the most common mistakes, so work each one out.',nextQ,true);
+drill('tf','True or false','Decide quickly, then read why.',t=>{let pool=TF.filter(q=>(!t||q.topic===t)&&!usedT.includes(q));if(!pool.length){usedT=usedT.filter(q=>t&&q.topic!==t);pool=TF.filter(q=>!t||q.topic===t)}const q=pick(pool);usedT.push(q);return q},true);
+
+/* fill in the blanks */
+let blSet=null;
+PAGE.blanks=()=>{if(!blSet)blSet=shuffle(BL).slice(0,7);const el=$('#blanks'),bank=shuffle(blSet.flatMap(b=>b[2].map(a=>Array.isArray(a)?a[0]:String(a))));
+ el.innerHTML=`<div class="qwrap"><h2>Fill in the blanks</h2><p class="mute">Type the missing word or number. Use the word bank if you get stuck.</p><div class="card"><div class="lab">Word bank</div><div class="bank">${bank.map(w=>`<span>${w}</span>`).join('')}</div>${blSet.map((b,i)=>{let j=0;return `<div class="bk">${i+1}. ${b[1].replace(/___/g,()=>`<input data-i="${i}" data-j="${j++}" autocomplete="off" spellcheck="false">`)}<div class="ans">Answer: ${b[2].map(a=>Array.isArray(a)?a[0]:a).join(', ')}</div></div>`}).join('')}
+ <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center"><button class="btn chk">Check answers</button><button class="btn ghost shw">Show answers</button><button class="btn ghost new">New set</button><b class="res"></b></div></div></div>`;
+ const norm=s=>s.toLowerCase().replace(/[$%,]/g,'').trim();
+ $('.chk',el).onclick=()=>{let ok=0,n=0;$$('.bk input',el).forEach(inp=>{const b=blSet[inp.dataset.i],a=b[2][inp.dataset.j],v=norm(inp.value),good=Array.isArray(a)?a.includes(v):v!==''&&Math.abs(parseFloat(v)-a)<=.011;inp.className=good?'ok':'no';n++;if(good)ok++;record(b[0],good)});$('.res',el).textContent=`${ok} of ${n} correct`};
+ $('.shw',el).onclick=()=>$$('.ans',el).forEach(a=>a.style.display='block');$('.new',el).onclick=()=>{blSet=null;PAGE.blanks()}};
+
+/* matching game */
+PAGE.match=()=>{const el=$('#match'),ps=shuffle(PAIRS).slice(0,6),L=shuffle(ps),Rr=shuffle(ps);let sel=null,left=6,t0=Date.now(),miss=0;
+ el.innerHTML=`<div class="qwrap"><h2>Matching game</h2><p class="mute">Click a term, then click its meaning. ${S.best.match?'Your best time: '+S.best.match+' seconds.':''}</p><div class="match"><div class="mc">${L.map(p=>`<button data-a="${PAIRS.indexOf(p)}"><b>${p[0]}</b></button>`).join('')}</div><div class="mc">${Rr.map(p=>`<button data-b="${PAIRS.indexOf(p)}">${p[1]}</button>`).join('')}</div></div><p class="cap res"></p><button class="btn ghost again" style="margin-top:8px">New game</button></div>`;
+ $$('[data-a]',el).forEach(b=>b.onclick=()=>{$$('[data-a]',el).forEach(x=>x.classList.remove('sel'));b.classList.add('sel');sel=b});
+ $$('[data-b]',el).forEach(b=>b.onclick=()=>{if(!sel)return;if(sel.dataset.a===b.dataset.b){sel.className='ok';b.className='ok';sel=null;if(--left===0){const s=Math.round((Date.now()-t0)/1000);if(!S.best.match||s<S.best.match){S.best.match=s;save()}$('.res',el).innerHTML=`<b>Done in ${s} seconds</b> with ${miss} miss${miss===1?'':'es'}.`}}else{miss++;b.classList.add('no');setTimeout(()=>b.classList.remove('no'),400)}});
+ $('.again',el).onclick=PAGE.match};
+
+/* tests */
+let TS=null,tick=null;
+function buildTest(n){const ng=Math.round(n*.45),ns=Math.round(n*.3),gk=shuffle(Object.keys(GEN)),qs=[];for(let i=0;i<ng;i++)qs.push(GEN[gk[i%gk.length]]());shuffle(SMC).slice(0,ns).forEach(s=>qs.push(smcQ(s)));shuffle(TF).slice(0,n-qs.length).forEach(q=>qs.push(q));return shuffle(qs)}
+PAGE.test=()=>{if(TS&&!TS.done)return testRender();const el=$('#test'),opt=[['Practice test','20 questions, no time limit',20,0],['Quick quiz','10 questions in 8 minutes',10,8],['Timed test','20 questions in 20 minutes',20,20],['Final exam','30 questions in 30 minutes',30,30]];
+ el.innerHTML=`<div class="qwrap"><h2>Tests</h2><p class="mute">Mixed questions from every topic. You see your score and the explanations at the end. ${S.best.test?'Your best score so far: <b>'+S.best.test+'%</b>.':''}</p><div class="grid g2">${opt.map((o,k)=>`<button class="step" data-k="${k}"><div class="n">${o[3]?'⏱':'✎'}</div><b>${o[0]}</b><span class="mute small">${o[1]}</span></button>`).join('')}</div></div>`;
+ $$('.step',el).forEach(b=>b.onclick=()=>{const o=opt[b.dataset.k];TS={qs:buildTest(o[2]),ans:Array(o[2]).fill(null),i:0,mins:o[3],name:o[0],end:o[3]?Date.now()+o[3]*6e4:0,done:false};clearInterval(tick);if(o[3])tick=setInterval(testTick,250);testRender()})};
+function testTick(){if(!TS||TS.done)return clearInterval(tick);const r=TS.end-Date.now(),t=$('#timer');if(r<=0)return testDone();if(t){const s=Math.ceil(r/1000);t.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');t.classList.toggle('low',s<=60)}}
+function testRender(){const el=$('#test'),q=TS.qs[TS.i],n=TS.qs.length,a=TS.ans;
+ el.innerHTML=`<div class="qwrap"><div class="bar2"><b>${TS.name} · Question ${TS.i+1} of ${n}</b>${TS.mins?'<span class="timer" id="timer"></span>':''}</div><div class="meter" style="margin:0 0 16px"><i style="width:${a.filter(x=>x!==null).length/n*100}%"></i></div>
+ <div class="card"><div class="qtag">${T[q.topic]}</div><div class="qq">${q.q}</div><div class="opts">${q.choices.map((c,k)=>`<button class="opt ${a[TS.i]===k?'sel':''}" data-k="${k}"><i>${q.choices.length===2?'TF'[k]:'ABCD'[k]}</i><span>${c}</span></button>`).join('')}</div>
+ <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap"><button class="btn ghost pv" ${TS.i?'':'disabled style="opacity:.4"'}>← Back</button>${TS.i<n-1?'<button class="btn nx">Next →</button>':''}<button class="btn ${TS.i<n-1?'ghost':''} fin" style="margin-left:auto">Finish test</button></div>
+ <div class="pal">${a.map((x,k)=>`<button class="${x!==null?'a':''} ${k===TS.i?'cur':''}" data-j="${k}">${k+1}</button>`).join('')}</div></div></div>`;
+ $$('.opt',el).forEach(b=>b.onclick=()=>{a[TS.i]=+b.dataset.k;testRender()});$('.pv',el).onclick=()=>{if(TS.i){TS.i--;testRender()}};if($('.nx',el))$('.nx',el).onclick=()=>{TS.i++;testRender()};$$('.pal button',el).forEach(b=>b.onclick=()=>{TS.i=+b.dataset.j;testRender()});
+ $('.fin',el).onclick=()=>{const un=a.filter(x=>x===null).length;if(!un||confirm(un+' question'+(un>1?'s are':' is')+' unanswered. Finish anyway?'))testDone()};if(TS.mins)testTick()}
+function testDone(){clearInterval(tick);TS.done=true;const el=$('#test'),n=TS.qs.length,by={};let ok=0;TS.qs.forEach((q,k)=>{const good=TS.ans[k]===q.answer;if(good)ok++;record(q.topic,good);const b=by[q.topic]||(by[q.topic]=[0,0]);b[1]++;if(good)b[0]++});const p=Math.round(ok/n*100);if(p>(S.best.test||0)){S.best.test=p;save()}
+ el.innerHTML=`<div class="qwrap"><div class="card" style="text-align:center"><div class="ring" style="--p:${p}"><div>${p}%</div></div><h2>${ok} of ${n} correct</h2><p class="mute">${p>=90?'Excellent. You are ready.':p>=75?'Solid. Review the misses below and you are there.':p>=50?'Getting there. Revisit the weak topics in Learn.':'Go back through the lessons, then try again.'}</p><button class="btn again">Take another test</button>
+ <table class="tb" style="margin-top:20px"><tr><th>Topic</th><th>Score</th></tr>${Object.keys(by).map(k=>`<tr><td>${T[k]}</td><td><b style="color:${by[k][0]===by[k][1]?'var(--good)':by[k][0]/by[k][1]<.5?'var(--bad)':'inherit'}">${by[k][0]} / ${by[k][1]}</b></td></tr>`).join('')}</table></div>
+ <div class="card" style="margin-top:16px"><div class="lab">Review</div>${TS.qs.map((q,k)=>{const good=TS.ans[k]===q.answer;return `<div class="rev"><div class="m ${good?'ok':'no'}">${good?'✓':'✗'} Question ${k+1} · ${T[q.topic]}</div><div class="qq" style="font-size:16px;margin:6px 0 8px">${q.q}</div><div class="small">${good?'':`Your answer: <b style="color:var(--bad)">${TS.ans[k]===null?'(blank)':q.choices[TS.ans[k]]}</b><br>`}Correct answer: <b style="color:var(--good)">${q.choices[q.answer]}</b></div><p class="small mute" style="margin:6px 0 0">${q.explain}</p></div>`}).join('')}</div></div>`;
+ $('.again',el).onclick=()=>{TS=null;PAGE.test()};window.scrollTo(0,0)}
+
+/* formula sheet */
+PAGE.sheet=()=>{$('#sheet').innerHTML=`<div class="bar2"><div><h2 style="margin:0">Formula sheet</h2><span class="mute">Every formula from the nine lessons on one page.</span></div><button class="btn ghost sm noprint" onclick="print()">Print</button></div><div class="grid g2 sheet">${TK.map(k=>`<div class="card"><h3>${T[k]}</h3>${LESSONS[k].fx.map(f=>`<div class="fx" style="font-size:16px;white-space:normal"><small>${f[0]}</small>${f[1]}</div>`).join('')}<p class="small mute" style="margin:8px 0 0">${LESSONS[k].ex}</p></div>`).join('')}</div>`};
+
+/* ---------- start ---------- */
+$('#nav').innerHTML=TABS.map(t=>`<button data-t="${t[0]}">${t[1]}</button>`).join('');
+$$('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.t));
+const setTheme=t=>{document.documentElement.dataset.theme=t};
+setTheme(S.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+$('#theme').onclick=()=>{S.theme=document.documentElement.dataset.theme==='dark'?'light':'dark';setTheme(S.theme);save()};
+go('home');
+</script>
+</body>
+</html>
